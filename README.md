@@ -1,10 +1,10 @@
-# billboard-top-100
-Node.js API to retrieve top 100 songs from Billboard's The Hot 100
+# pcpartpicker
+Node.js API to retrieve parts from PCPartPicker
 
 # install
 
 ```
-npm install billboard-top-100
+npm install pcpartpicker
 ```
 
 # example
