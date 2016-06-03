@@ -1,6 +1,93 @@
 var request = require("request");
 var cheerio = require("cheerio");
 
+var getMemory = function(cb){
+
+	var ramoArray = [];
+	var nameArray = [];
+	var speedArray = [];
+	var typeArray = [];
+	var casArray = [];
+	var modulesArray = [];
+	var sizeArray = [];
+	var ppgArray = [];
+	var priceArray = [];
+
+	request("https://pcpartpicker.com/products/memory/fetch/?xcx=0&mode=list&xslug=&search=", function(error, response, html1){
+
+		var numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+
+		var fetch = function(q){	
+
+			if (q < numPages){	
+
+				request("https://pcpartpicker.com/products/memory/fetch/?xcx=0&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
+
+					var actualHTML = JSON.parse(response.body).result.html;
+
+					var $ = cheerio.load(actualHTML);
+
+					$('a').each(function(){
+						if ($(this).attr('href').indexOf('product') != -1){
+
+							if (actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 1040).split("$")[2])
+							{
+								priceArray.push(parseFloat(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length + 30, actualHTML.indexOf($(this).text()) + $(this).text().length + 1040).split("$")[2].split("<")[0]));
+							}
+							else {
+								priceArray.push("N/A");
+							}
+
+							nameArray.push($(this).text());
+
+							speedArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("nowrap;\">")[1].split("<")[0]);
+
+							typeArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("nowrap;\">")[2].split("<")[0]);
+
+							casArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[1].split("<")[0]);
+
+							modulesArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[2].split("<")[0]);
+
+							sizeArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[3].split("<")[0]);
+
+							ppgArray.push(parseFloat(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[4].split("<")[0].replace("$", "")));
+
+						}
+					});
+
+					fetch(q + 1);
+
+					if (q == numPages - 1){
+						for (var i = 0; i < nameArray.length; i++){
+							ramoArray.push({
+								name: nameArray[i],
+								price: priceArray[i],
+								speed: speedArray[i],
+								type: typeArray[i],
+								CAS: casArray[i],
+								modules: modulesArray[i],
+								size: sizeArray[i],
+								pricePerGB: ppgArray[i]
+							});
+
+							if (i == nameArray.length - 1){
+								cb (ramoArray);
+							}
+						}
+					}
+
+				});
+
+			}
+			
+		}
+		
+		fetch(0);
+
+	});
+
+}
+
 var getMotherboards = function(cb){
 
 	var mobooArray = [];
@@ -214,3 +301,4 @@ var getCPUs = function(cb){
 module.exports.getCPUs = getCPUs;
 module.exports.getCoolers = getCoolers;
 module.exports.getMotherboards = getMotherboards;
+module.exports.getMemory = getMemory;

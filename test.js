@@ -11,3 +11,7 @@ var pcpartpicker = require("./pcpartpicker");
 // pcpartpicker.getMotherboards(function(mobos){
 // 	console.log(mobos);
 // });
+
+pcpartpicker.getMemory(function(ram){
+	console.log(ram);
+});
