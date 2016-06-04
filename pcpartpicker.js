@@ -1,7 +1,7 @@
 var request = require("request");
 var cheerio = require("cheerio");
 
-var getMemory = function(cb){
+var getMemory = function(sortOptions, cb){
 
 	var ramoArray = [];
 	var nameArray = [];
@@ -13,15 +13,49 @@ var getMemory = function(cb){
 	var ppgArray = [];
 	var priceArray = [];
 
-	request("https://pcpartpicker.com/products/memory/fetch/?xcx=0&mode=list&xslug=&search=", function(error, response, html1){
+	var sortString = "";
 
-		var numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+	if (sortOptions.size){	
+		sortString += "&Z=";
+		for (var s = 0; s < sortOptions.size.length; s++){
+			sortString += (parseInt(sortOptions.size[s].split("GB")[0]) * 1024).toString() + "00" + sortOptions.size[s].split("(")[1].split("x")[0];
+			if (s != sortOptions.size.length - 1){
+				sortString += ",";
+			}
+		}
+	}
+	if (sortOptions.speed){
+		sortString += "&s=";
+		for (var s = 0; s < sortOptions.speed.length; s++){
+			sortString += sortOptions.speed[s].split("DDR")[1].split("-")[0] + "0" + sortOptions.speed[s].split("-")[1];
+			if (s != sortOptions.speed.length - 1){
+				sortString += ",";
+			}
+		}
+	}
+	if (sortOptions.rating){
+		sortString += "&R=";
+		for (var s = 0; s < sortOptions.rating.length; s++){
+			sortString += sortOptions.rating[s];
+			if (s != sortOptions.rating.length - 1){
+				sortString += ",";
+			}
+		}
+	}
+
+	request("https://pcpartpicker.com/products/memory/fetch/?xcx=0" + sortString + "&mode=list&xslug=&search=", function(error, response, html1){
+
+		var numPages = 1;
+
+		if (html1.toString().lastIndexOf("page=") != -1){
+			numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		}	
 
 		var fetch = function(q){	
 
 			if (q < numPages){	
 
-				request("https://pcpartpicker.com/products/memory/fetch/?xcx=0&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
+				request("https://pcpartpicker.com/products/memory/fetch/?xcx=0" + sortString + "&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
 
 					var actualHTML = JSON.parse(response.body).result.html;
 
