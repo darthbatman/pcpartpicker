@@ -1,6 +1,88 @@
 var request = require("request");
 var cheerio = require("cheerio");
 
+var getCases = function(cb){
+
+	var caseoArray = [];
+	var nameArray = [];
+	var typeArray = [];
+	var five25bArray = [];
+	var three5bArray = [];
+	var psuArray = [];
+	var priceArray = [];
+
+	request("https://pcpartpicker.com/products/case/fetch/?xcx=0&mode=list&xslug=&search=", function(error, response, html1){
+
+		var numPages = 1;
+
+		if (html1.toString().lastIndexOf("page=") != -1){
+			numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		}	
+
+		var fetch = function(q){	
+
+			if (q < numPages){	
+
+				request("https://pcpartpicker.com/products/case/fetch/?xcx=0&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
+
+					var actualHTML = JSON.parse(response.body).result.html;
+
+					var $ = cheerio.load(actualHTML);
+
+					$('a').each(function(){
+						if ($(this).attr('href').indexOf('product') != -1){
+
+							if (actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 1040).split("$")[1])
+							{
+								priceArray.push(parseFloat(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length + 30, actualHTML.indexOf($(this).text()) + $(this).text().length + 1040).split("$")[1].split("<")[0]));
+							}
+							else {
+								priceArray.push("N/A");
+							}
+
+							nameArray.push($(this).text());
+
+							typeArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("nowrap;\">")[1].split("<")[0]);
+
+							five25bArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[1].split("<")[0]);
+
+							three5bArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[2].split("<")[0]);
+
+							psuArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[3].split("<")[0]);
+						}
+					});
+
+					fetch(q + 1);
+
+					if (q == numPages - 1){
+						for (var i = 0; i < nameArray.length; i++){
+							caseoArray.push({
+								name: nameArray[i],
+								price: priceArray[i],
+								type: typeArray[i],
+								fiveAndAQuarterInchBays: five25bArray[i],
+								threeAndAQuarterInchBays: three5bArray[i],
+								powerSupply: psuArray[i]
+							});
+
+							if (i == nameArray.length - 1){
+								cb (caseoArray);
+							}
+						}
+					}
+
+				});
+
+			}
+			
+		}
+		
+		fetch(0);
+
+	});
+
+}
+
 var getPSUs = function(cb){
 
 	var psuoArray = [];
@@ -608,3 +690,4 @@ module.exports.getMemory = getMemory;
 module.exports.getStorage = getStorage;
 module.exports.getGPUs = getGPUs;
 module.exports.getPSUs = getPSUs;
+module.exports.getCases = getCases;

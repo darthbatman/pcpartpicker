@@ -30,6 +30,10 @@ var pcpartpicker = require("./pcpartpicker");
 // 	console.log(GPUs);
 // });
 
-pcpartpicker.getPSUs(function(PSUs){
-	console.log(PSUs);
+// pcpartpicker.getPSUs(function(PSUs){
+// 	console.log(PSUs);
+// });
+
+pcpartpicker.getCases(function(cases){
+	console.log(cases);
 });
