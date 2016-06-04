@@ -1,6 +1,92 @@
 var request = require("request");
 var cheerio = require("cheerio");
 
+var getPSUs = function(cb){
+
+	var psuoArray = [];
+	var nameArray = [];
+	var seriesArray = [];
+	var formArray = [];
+	var efficiencyArray = [];
+	var wattsArray = [];
+	var modularArray = [];
+	var priceArray = [];
+
+	request("https://pcpartpicker.com/products/power-supply/fetch/?xcx=0&mode=list&xslug=&search=", function(error, response, html1){
+
+		var numPages = 1;
+
+		if (html1.toString().lastIndexOf("page=") != -1){
+			numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		}	
+
+		var fetch = function(q){	
+
+			if (q < numPages){	
+
+				request("https://pcpartpicker.com/products/power-supply/fetch/?xcx=0&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
+
+					var actualHTML = JSON.parse(response.body).result.html;
+
+					var $ = cheerio.load(actualHTML);
+
+					$('a').each(function(){
+						if ($(this).attr('href').indexOf('product') != -1){
+
+							if (actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 1040).split("$")[1])
+							{
+								priceArray.push(parseFloat(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length + 30, actualHTML.indexOf($(this).text()) + $(this).text().length + 1040).split("$")[1].split("<")[0]));
+							}
+							else {
+								priceArray.push("N/A");
+							}
+
+							nameArray.push($(this).text());
+
+							seriesArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("<td>")[1].split("<")[0]);
+
+							formArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("nowrap;\">")[1].split("<")[0]);
+
+							efficiencyArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("nowrap;\">")[2].split("<")[0]);
+
+							wattsArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[1].split("<")[0]);
+
+							modularArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[2].split("<")[0]);
+						}
+					});
+
+					fetch(q + 1);
+
+					if (q == numPages - 1){
+						for (var i = 0; i < nameArray.length; i++){
+							psuoArray.push({
+								name: nameArray[i],
+								price: priceArray[i],
+								series: seriesArray[i],
+								form: formArray[i],
+								efficiency: efficiencyArray[i],
+								watts: wattsArray[i],
+								modular: modularArray[i]
+							});
+
+							if (i == nameArray.length - 1){
+								cb (psuoArray);
+							}
+						}
+					}
+
+				});
+
+			}
+			
+		}
+		
+		fetch(0);
+
+	});
+
+}
+
 var getGPUs = function(cb){
 
 	var gpuoArray = [];
@@ -521,3 +607,4 @@ module.exports.getMotherboards = getMotherboards;
 module.exports.getMemory = getMemory;
 module.exports.getStorage = getStorage;
 module.exports.getGPUs = getGPUs;
+module.exports.getPSUs = getPSUs;
