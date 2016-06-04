@@ -22,6 +22,10 @@ var pcpartpicker = require("./pcpartpicker");
 // 	console.log(ram);
 // });
 
-pcpartpicker.getStorage(function(storage){
-	console.log(storage);
+// pcpartpicker.getStorage(function(storage){
+// 	console.log(storage);
+// });
+
+pcpartpicker.getGPUs(function(GPUs){
+	console.log(GPUs);
 });
