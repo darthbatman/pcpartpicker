@@ -1,6 +1,95 @@
 var request = require("request");
 var cheerio = require("cheerio");
 
+var getStorage = function(cb){
+
+	var storageoArray = [];
+	var nameArray = [];
+	var seriesArray = [];
+	var formArray = [];
+	var typeArray = [];
+	var capacityArray = [];
+	var cacheArray = [];
+	var ppgArray = [];
+	var priceArray = [];
+
+	request("https://pcpartpicker.com/products/internal-hard-drive/fetch/?xcx=0&mode=list&xslug=&search=", function(error, response, html1){
+
+		var numPages = 1;
+
+		if (html1.toString().lastIndexOf("page=") != -1){
+			numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		}	
+
+		var fetch = function(q){	
+
+			if (q < numPages){	
+
+				request("https://pcpartpicker.com/products/internal-hard-drive/fetch/?xcx=0&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
+
+					var actualHTML = JSON.parse(response.body).result.html;
+
+					var $ = cheerio.load(actualHTML);
+
+					$('a').each(function(){
+						if ($(this).attr('href').indexOf('product') != -1){
+
+							if (actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 1040).split("$")[2])
+							{
+								priceArray.push(parseFloat(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length + 30, actualHTML.indexOf($(this).text()) + $(this).text().length + 1040).split("$")[2].split("<")[0]));
+							}
+							else {
+								priceArray.push("N/A");
+							}
+
+							nameArray.push($(this).text());
+
+							seriesArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("<td>")[1].split("<")[0]);
+
+							formArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[1].split("<")[0]);
+
+							typeArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[2].split("<")[0]);
+
+							capacityArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[3].split("<")[0]);
+
+							cacheArray.push(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[4].split("<")[0]);
+
+							ppgArray.push(parseFloat(actualHTML.substring(actualHTML.indexOf($(this).text()) + $(this).text().length, actualHTML.indexOf($(this).text()) + $(this).text().length + 300).split("right;\">")[5].split("<")[0].replace("$", "")));
+						}
+					});
+
+					fetch(q + 1);
+
+					if (q == numPages - 1){
+						for (var i = 0; i < nameArray.length; i++){
+							storageoArray.push({
+								name: nameArray[i],
+								price: priceArray[i],
+								series: seriesArray[i],
+								form: formArray[i],
+								type: capacityArray[i],
+								cache: cacheArray[i],
+								pricePerGB: ppgArray[i]
+							});
+
+							if (i == nameArray.length - 1){
+								cb (storageoArray);
+							}
+						}
+					}
+
+				});
+
+			}
+			
+		}
+		
+		fetch(0);
+
+	});
+
+}
+
 var getMemory = function(sortOptions, cb){
 
 	var ramoArray = [];
@@ -134,7 +223,11 @@ var getMotherboards = function(cb){
 
 	request("https://pcpartpicker.com/products/motherboard/fetch/?xcx=0&mode=list&xslug=&search=", function(error, response, html1){
 
-		var numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		var numPages = 1;
+
+		if (html1.toString().lastIndexOf("page=") != -1){
+			numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		}	
 
 		var fetch = function(q){	
 
@@ -206,7 +299,11 @@ var getCoolers = function(cb){
 
 	request("https://pcpartpicker.com/products/cpu-cooler/fetch/?mode=list&xslug=&search=", function(error, response, html1){
 
-		var numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		var numPages = 1;
+
+		if (html1.toString().lastIndexOf("page=") != -1){
+			numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		}	
 
 		var fetch = function(q){	
 
@@ -274,7 +371,11 @@ var getCPUs = function(cb){
 
 	request("https://pcpartpicker.com/parts/cpu/fetch/?mode=list&xslug=&search=", function(error, response, html1){
 
-		var numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		var numPages = 1;
+
+		if (html1.toString().lastIndexOf("page=") != -1){
+			numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
+		}	
 
 		var fetch = function(q){	
 
@@ -336,3 +437,4 @@ module.exports.getCPUs = getCPUs;
 module.exports.getCoolers = getCoolers;
 module.exports.getMotherboards = getMotherboards;
 module.exports.getMemory = getMemory;
+module.exports.getStorage = getStorage;
