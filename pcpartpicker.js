@@ -1,7 +1,7 @@
 var request = require("request");
 var cheerio = require("cheerio");
 
-var getMemory = function(cb){
+var getMemory = function(sortOptions, cb){
 
 	var ramoArray = [];
 	var nameArray = [];
@@ -13,7 +13,9 @@ var getMemory = function(cb){
 	var ppgArray = [];
 	var priceArray = [];
 
-	request("https://pcpartpicker.com/products/memory/fetch/?xcx=0&mode=list&xslug=&search=", function(error, response, html1){
+	var sortString = "";
+
+	request("https://pcpartpicker.com/products/memory/fetch/?xcx=0" + sortString + "&mode=list&xslug=&search=", function(error, response, html1){
 
 		var numPages = parseInt(html1.toString().substring(html1.toString().lastIndexOf("page=") + 5).split("\\\"")[0]);
 
@@ -21,7 +23,7 @@ var getMemory = function(cb){
 
 			if (q < numPages){	
 
-				request("https://pcpartpicker.com/products/memory/fetch/?xcx=0&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
+				request("https://pcpartpicker.com/products/memory/fetch/?xcx=0" + sortString + "&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
 
 					var actualHTML = JSON.parse(response.body).result.html;
 

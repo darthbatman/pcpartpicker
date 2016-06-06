@@ -12,6 +12,12 @@ var pcpartpicker = require("./pcpartpicker");
 // 	console.log(mobos);
 // });
 
-pcpartpicker.getMemory(function(ram){
+var memorySortOptions = {
+	"rating": 4,
+	"speed": "ddr3-2400",
+	"size": "4GB (1x4GB)"
+};
+
+pcpartpicker.getMemory(memorySortOptions, function(ram){
 	console.log(ram);
 });
