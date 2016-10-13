@@ -1,6 +1,6 @@
 # MEMORY
 
-manufacturer (m)
+### manufacturer (m)
 
 alphabetically organized manufacturers
 cannot find full list
@@ -10,30 +10,30 @@ e.g. corsair = 11, crucial = 12
 
 multiple manufacturers separated by comma
 
-size (Z)
+### size (Z)
 
 number of GB * 1024  + "00" + number of sticks
 multiple sizes separated by comma
 
-voltage (V)
+### voltage (V)
 
 minimum voltage in millivolts + "," + maximum voltage in millivolts
 
-cas latency (L)
+### cas latency (L)
 
 minimum cas * 10 + "," + maximum cas * 10
 
-ecc / registered (E)
+### ecc / registered (E)
 
 1 or 0 for ecc (yes or no) + 1 or 0 for registered or unbuffered
 multiple values separated by comma
 
-heatspreader (h)
+### heatspreader (h)
 
 1 or 0 for yes or no
 1,0 for both
 
-color (C)
+### color (C)
 
 alphabetically organized colors
 cannot find full list
@@ -43,17 +43,17 @@ e.g. beige = 3, black = 6
 
 multiple colors separated by comma
 
-rating (R)
+### rating (R)
 
 0,2-5
 multiple ratings separated by comma
 
-speed (s)
+### speed (s)
 
 n where n is ddrn + "0" + speed
 multiple speeds separated by comma
 
-type (t)
+### type (t)
 
 may be larger organized list but so far:
 
