@@ -7,38 +7,65 @@ Node.js API to retrieve parts from PCPartPicker
 npm install pcpartpicker
 ```
 
-# example
+# examples
+
+### usage
 
 ```js
-var billboard = require("billboard-top-100");
+var pcpartpicker = require("pcpartpicker");
+```
 
-billboard(function(songs){
-	console.log(songs); //prints array of top 100 songs
-	console.log(songs[3]); //prints song with rank: 4
-	console.log(songs[0].title); //prints title of top song
-	console.log(songs[0].artist); //prints artist of top songs
-	console.log(songs[0].rank) //prints rank of top song (1)
+### CPUs
+
+```js
+pcpartpicker.getCPUs(function(CPUs){
+	console.log(CPUs); // prints all CPUs
+	console.log(CPUs[0]); // prints first listed CPU
+	console.log(CPUs[0].name); // prints name of first listed CPU
+	console.log(CPUs[0].price); // prints name of first listed CPU
+	console.log(CPUs[0].speed); // prints name of first listed CPU
+	console.log(CPUs[0].tdp); // prints name of first listed CPU
+	console.log(CPUs[0].cores); // prints name of first listed CPU
 });
 ```
+
 # api
 
-### songs
+### getCPUs
 
-Type: `array`
+Type: `function`
 
-Song objects.
+Returns array of CPU objects.
 
-### songObject.rank
-
-Type: `number`
-
-Rank of song on charts.
-
-### songObject.title
+### cpuObject.name
 
 Type: `string`
 
-Title of song.
+Name of CPU.
+
+### cpuObject.price
+
+Type: `number`
+
+Price of CPU.
+
+### cpuObject.speed
+
+Type: `number`
+
+Speed of CPU.
+
+### cpuObject.tdp
+
+Type: `number`
+
+TDP of CPU.
+
+### cpuObject.cores
+
+Type: `number`
+
+Number of cores of CPU.
 
 ### songObject.artist
 
