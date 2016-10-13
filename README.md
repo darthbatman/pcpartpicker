@@ -67,12 +67,4 @@ Type: `number`
 
 Number of cores of CPU.
 
-### songObject.artist
-
-Type: `string`
-
-Name of artist of song.
-
-# license
-
 MIT © [Rishi Masand](https://github.com/darthbatman)
