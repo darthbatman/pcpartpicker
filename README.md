@@ -22,16 +22,29 @@ pcpartpicker.getCPUs(function(CPUs){
 	console.log(CPUs); // prints all CPUs
 	console.log(CPUs[0]); // prints first listed CPU
 	console.log(CPUs[0].name); // prints name of first listed CPU
-	console.log(CPUs[0].price); // prints name of first listed CPU
-	console.log(CPUs[0].speed); // prints name of first listed CPU
-	console.log(CPUs[0].tdp); // prints name of first listed CPU
-	console.log(CPUs[0].cores); // prints name of first listed CPU
+	console.log(CPUs[0].price); // prints price of first listed CPU
+	console.log(CPUs[0].speed); // prints speed of first listed CPU
+	console.log(CPUs[0].tdp); // prints TDP of first listed CPU
+	console.log(CPUs[0].cores); // prints cores of first listed CPU
+});
+```
+
+### coolers
+
+```js
+pcpartpicker.getCoolers(function(coolers){
+	console.log(coolers); // prints all coolers
+	console.log(coolers[0]); // prints first listed cooler
+	console.log(coolers[0].name); // prints name of first listed cooler
+	console.log(coolers[0].price); // prints price of first listed cooler
+	console.log(coolers[0].noise); // prints noise of first listed cooler
+	console.log(coolers[0].rpm); // prints rpm of first listed cooler
 });
 ```
 
 # api
 
-### getCPUs
+## getCPUs
 
 Type: `function`
 
@@ -47,24 +60,56 @@ Name of CPU.
 
 Type: `number`
 
-Price of CPU.
+Price of CPU in USD.
 
 ### cpuObject.speed
 
 Type: `number`
 
-Speed of CPU.
+Speed of CPU in GHz.
 
 ### cpuObject.tdp
 
 Type: `number`
 
-TDP of CPU.
+TDP of CPU in W.
 
 ### cpuObject.cores
 
 Type: `number`
 
 Number of cores of CPU.
+
+## getCoolers
+
+Type: `function`
+
+Returns array of cooler objects.
+
+### coolerObject.name
+
+Type: `string`
+
+Name of cooler.
+
+### coolerObject.price
+
+Type: `number`
+
+Price of cooler in USD.
+
+### coolerObject.noise
+
+Type: `number`
+
+Noise of cooler in dB.
+
+### coolerObject.rpm
+
+Type: `number`
+
+RPM of cooler.
+
+# license
 
 MIT © [Rishi Masand](https://github.com/darthbatman)
