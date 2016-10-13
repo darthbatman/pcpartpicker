@@ -5,7 +5,6 @@
   "main": "pcpartpicker.js",
   "dependencies": {
     "cheerio": "^0.20.0",
-    "express": "^4.13.4",
     "request": "^2.72.0"
   },
   "devDependencies": {},
@@ -23,7 +22,7 @@
     "songs",
     "music"
   ],
-  "author": "Rishi Masand <darthanakin44@gmail.com> (https://github.com/darthbatman)",
+  "author": "Rishi Masand <masandrishi@gmail.com> (https://github.com/darthbatman)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/darthbatman/pcpartpicker/issues"
