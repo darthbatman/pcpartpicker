@@ -55,6 +55,24 @@ pcpartpicker.getMotherboards(function(motherboards){
 	console.log(motherboards[0].ramSlots); // prints ramSlots of first listed motherboards
 	console.log(motherboards[0].maxRAM); // prints maxRAM of first listed motherboards
 });
+```
+
+### memory
+
+```js
+pcpartpicker.getMemory(function(ram){
+	console.log(ram); // prints all memory
+	console.log(ram[0]); // prints first listed memory
+	console.log(ram[0].name); // prints name of first listed memory
+	console.log(ram[0].price); // prints price of first listed memory
+	console.log(ram[0].type); // prints type of first listed memory
+	console.log(ram[0].speed); // prints speed of first listed memory
+	console.log(ram[0].cas); // prints cas of first listed memory
+	console.log(ram[0].size); // prints size of first listed memory
+	console.log(ram[0].modules); // prints modules of first listed memory
+	console.log(ram[0].ppg); // prints price per GB of first listed memory
+});
+```
 
 # api
 
@@ -134,7 +152,7 @@ Returns array of motherboard objects.
 
 Type: `string`
 
-Name of cooler.
+Name of motherboard.
 
 ### motherboardObject.price
 
@@ -165,6 +183,60 @@ Number of RAM slots of motherboard.
 Type: `number`
 
 Maximum RAM of motherboard.
+
+## getMemory
+
+Type: `function`
+
+Returns array of memory objects.
+
+### memoryObject.name
+
+Type: `string`
+
+Name of memory.
+
+### memoryObject.price
+
+Type: `number`
+
+Price of memory in USD.
+
+### memoryObject.speed
+
+Type: `number`
+
+Speed of memory.
+
+### memoryObject.type
+
+Type: `string`
+
+Type of memory.
+
+### memoryObject.cas
+
+Type: `number`
+
+CAS of memory.
+
+### memoryObject.modules
+
+Type: `number`
+
+Number of modules of memory.
+
+### memoryObject.size
+
+Type: `number`
+
+Size of memory.
+
+### memoryObject.ppg
+
+Type: `number`
+
+Price per GB of memory.
 
 # license
 
