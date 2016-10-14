@@ -74,6 +74,23 @@ pcpartpicker.getMemory(function(ram){
 });
 ```
 
+### storage
+
+```js
+pcpartpicker.getStorage(function(storage){
+	console.log(storage); // prints all storage
+	console.log(storage[0]); // prints first listed storage
+	console.log(storage[0].name); // prints name of first listed storage
+	console.log(storage[0].price); // prints price of first listed storage
+	console.log(storage[0].series); // prints series of first listed storage
+	console.log(storage[0].form); // prints form of first listed storage
+	console.log(storage[0].type); // prints type of first listed storage
+	console.log(storage[0].capacity); // prints capacity of first listed storage
+	console.log(storage[0].cache); // prints cache of first listed storage
+	console.log(storage[0].ppg); // prints price per GB of first listed storage
+});
+```
+
 # api
 
 ## getCPUs
@@ -237,6 +254,60 @@ Size of memory.
 Type: `number`
 
 Price per GB of memory.
+
+## getStorage
+
+Type: `function`
+
+Returns array of storage objects.
+
+### storageObject.name
+
+Type: `string`
+
+Name of storage.
+
+### storageObject.price
+
+Type: `number`
+
+Price of storage in USD.
+
+### storageObject.series
+
+Type: `number`
+
+Series of storage.
+
+### storageObject.form
+
+Type: `string`
+
+Form of storage.
+
+### storageObject.type
+
+Type: `number`
+
+Type of storage.
+
+### storageObject.capacity
+
+Type: `number`
+
+Capacity of storage.
+
+### storageObject.cache
+
+Type: `number`
+
+Cache of storage.
+
+### storageObject.ppg
+
+Type: `number`
+
+Price per GB of storage.
 
 # license
 
