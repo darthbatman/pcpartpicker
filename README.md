@@ -106,6 +106,22 @@ pcpartpicker.getGPUs(function(GPUs){
 });
 ```
 
+### PSUs
+
+```js
+pcpartpicker.getPSUs(function(PSUs){
+	console.log(PSUs); // prints all PSUs
+	console.log(PSUs[0]); // prints first listed PSU
+	console.log(PSUs[0].name); // prints name of first listed PSU
+	console.log(PSUs[0].price); // prints price of first listed PSU
+	console.log(PSUs[0].series); // prints series of first listed PSU
+	console.log(PSUs[0].form); // prints form of first listed PSU
+	console.log(PSUs[0].efficiency); // prints efficiency of first listed PSU
+	console.log(PSUs[0].watts); // prints wattage of first listed PSU
+	console.log(PSUs[0].modular); // prints modularity of first listed PSU
+});
+```
+
 # api
 
 ## getCPUs
@@ -328,7 +344,7 @@ Price per GB of storage.
 
 Type: `function`
 
-Returns array of storage objects.
+Returns array of GPU objects.
 
 ### GPUObject.name
 
@@ -365,6 +381,54 @@ Chipset of GPU.
 Type: `number`
 
 Core Clock Speed of GPU.
+
+## getPSUs
+
+Type: `function`
+
+Returns array of PSU objects.
+
+### PSUObject.name
+
+Type: `string`
+
+Name of GPU.
+
+### PSUObject.price
+
+Type: `number`
+
+Price of PSU in USD.
+
+### PSUObject.series
+
+Type: `number`
+
+Series of PSU.
+
+### PSUObject.form
+
+Type: `string`
+
+Form of PSU.
+
+### PSUObject.efficiency
+
+Type: `number`
+
+Efficiency of PSU.
+
+### PSUObject.watts
+
+Type: `number`
+
+Wattage of PSU.
+
+### PSUObject.modular
+
+Type: `number`
+
+Modularity of PSU.
 
 # license
 
