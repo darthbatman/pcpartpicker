@@ -91,6 +91,21 @@ pcpartpicker.getStorage(function(storage){
 });
 ```
 
+### GPUs
+
+```js
+pcpartpicker.getGPUs(function(GPUs){
+	console.log(GPUs); // prints all GPUs
+	console.log(GPUs[0]); // prints first listed GPU
+	console.log(GPUs[0].name); // prints name of first listed GPU
+	console.log(GPUs[0].price); // prints price of first listed GPU
+	console.log(GPUs[0].series); // prints series of first listed GPU
+	console.log(GPUs[0].memory); // prints memory of first listed GPU
+	console.log(GPUs[0].chipset); // prints chipset of first listed GPU
+	console.log(GPUs[0].cc); // prints core clock speed of first listed GPU
+});
+```
+
 # api
 
 ## getCPUs
@@ -308,6 +323,48 @@ Cache of storage.
 Type: `number`
 
 Price per GB of storage.
+
+## getGPUs
+
+Type: `function`
+
+Returns array of storage objects.
+
+### GPUObject.name
+
+Type: `string`
+
+Name of GPU.
+
+### GPUObject.price
+
+Type: `number`
+
+Price of GPU in USD.
+
+### GPUObject.series
+
+Type: `number`
+
+Series of GPU.
+
+### GPUObject.memory
+
+Type: `string`
+
+Memory of GPU.
+
+### GPUObject.chipset
+
+Type: `number`
+
+Chipset of GPU.
+
+### GPUObject.cc
+
+Type: `number`
+
+Core Clock Speed of GPU.
 
 # license
 
