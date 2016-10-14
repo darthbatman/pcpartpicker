@@ -321,7 +321,7 @@ Price of storage in USD.
 
 ### storageObject.series
 
-Type: `number`
+Type: `string`
 
 Series of storage.
 
@@ -333,7 +333,7 @@ Form of storage.
 
 ### storageObject.type
 
-Type: `number`
+Type: `string`
 
 Type of storage.
 
@@ -375,19 +375,19 @@ Price of GPU in USD.
 
 ### GPUObject.series
 
-Type: `number`
+Type: `string`
 
 Series of GPU.
 
 ### GPUObject.memory
 
-Type: `string`
+Type: `number`
 
 Memory of GPU.
 
 ### GPUObject.chipset
 
-Type: `number`
+Type: `string`
 
 Chipset of GPU.
 
@@ -417,7 +417,7 @@ Price of PSU in USD.
 
 ### PSUObject.series
 
-Type: `number`
+Type: `string`
 
 Series of PSU.
 
@@ -429,7 +429,7 @@ Form of PSU.
 
 ### PSUObject.efficiency
 
-Type: `number`
+Type: `string`
 
 Efficiency of PSU.
 
@@ -441,7 +441,7 @@ Wattage of PSU.
 
 ### PSUObject.modular
 
-Type: `number`
+Type: `string`
 
 Modularity of PSU.
 
@@ -465,13 +465,13 @@ Price of case in USD.
 
 ### caseObject.type
 
-Type: `number`
+Type: `string`
 
 Type of case.
 
 ### caseObject.five25b
 
-Type: `string`
+Type: `number`
 
 Number of 5.25 inch drive bays of case.
 
@@ -483,7 +483,7 @@ Number of 3.5 inch drive bays of case.
 
 ### caseObject.psu
 
-Type: `number`
+Type: `boolean`
 
 Inclusion of PSU for case.
 
