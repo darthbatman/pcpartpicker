@@ -1,6 +1,6 @@
 {
   "name": "pcpartpicker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gets parts from PCPartPicker",
   "main": "pcpartpicker.js",
   "dependencies": {
@@ -16,11 +16,12 @@
     "url": "git+https://github.com/darthbatman/pcpartpicker.git"
   },
   "keywords": [
-    "billboard",
-    "top",
-    "100",
-    "songs",
-    "music"
+    "pcpartpicker",
+    "pc",
+    "part-picker",
+    "part",
+    "picker",
+    "desktop"
   ],
   "author": "Rishi Masand <masandrishi@gmail.com> (https://github.com/darthbatman)",
   "license": "MIT",
