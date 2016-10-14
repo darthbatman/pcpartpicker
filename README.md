@@ -122,6 +122,21 @@ pcpartpicker.getPSUs(function(PSUs){
 });
 ```
 
+### cases
+
+```js
+pcpartpicker.getCases(function(cases){
+	console.log(cases); // prints all cases
+	console.log(cases[0]); // prints first listed case
+	console.log(cases[0].name); // prints name of first listed case
+	console.log(cases[0].price); // prints price of first listed case
+	console.log(cases[0].type); // prints type of first listed case
+	console.log(cases[0].five25b); // prints number of 5.25 inch drive bays of first listed case
+	console.log(cases[0].three5b); // prints number of 3.5 inch drive bays of first listed case
+	console.log(cases[0].psu); // prints if psu included for first listed case
+});
+```
+
 # api
 
 ## getCPUs
@@ -392,7 +407,7 @@ Returns array of PSU objects.
 
 Type: `string`
 
-Name of GPU.
+Name of PSU.
 
 ### PSUObject.price
 
@@ -429,6 +444,48 @@ Wattage of PSU.
 Type: `number`
 
 Modularity of PSU.
+
+## getCases
+
+Type: `function`
+
+Returns array of case objects.
+
+### caseObject.name
+
+Type: `string`
+
+Name of PSU.
+
+### caseObject.price
+
+Type: `number`
+
+Price of case in USD.
+
+### caseObject.type
+
+Type: `number`
+
+Type of case.
+
+### caseObject.five25b
+
+Type: `string`
+
+Number of 5.25 inch drive bays of case.
+
+### caseObject.three5b
+
+Type: `number`
+
+Number of 3.5 inch drive bays of case.
+
+### caseObject.psu
+
+Type: `number`
+
+Inclusion of PSU for case.
 
 # license
 
