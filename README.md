@@ -1,18 +1,12 @@
 # pcpartpicker
 Node.js API to retrieve parts from PCPartPicker
 
-# install
-
-```
-npm install pcpartpicker
-```
-
 # examples
 
 ### usage
 
 ```js
-var pcpartpicker = require("pcpartpicker");
+var pcpartpicker = require("pcpartpicker.js");
 ```
 
 ### CPUs
