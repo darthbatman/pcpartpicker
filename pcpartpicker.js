@@ -502,7 +502,7 @@ var getMotherboards = function(sortOptions, cb){
 	var sortString = "";
 
 	if (sortOptions.socket){	
-		sortString += "&k=";
+		sortString += "&s=";
 		for (var s = 0; s < sortOptions.socket.length; s++){
 			sortString += socketEquivalences[sortOptions.socket[s]].toString();
 			if (s != sortOptions.socket.length - 1){
@@ -511,7 +511,7 @@ var getMotherboards = function(sortOptions, cb){
 		}
 	}
 
-	request("https://pcpartpicker.com/products/motherboard/fetch/?xcx=0&mode=list&xslug=&search=", function(error, response, html1){
+	request("https://pcpartpicker.com/products/motherboard/fetch/?xcx=0" + sortString + "&mode=list&xslug=&search=", function(error, response, html1){
 
 		var numPages = 1;
 
@@ -523,7 +523,7 @@ var getMotherboards = function(sortOptions, cb){
 
 			if (q < numPages){	
 
-				request("https://pcpartpicker.com/products/motherboard/fetch/?xcx=0&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
+				request("https://pcpartpicker.com/products/motherboard/fetch/?xcx=0" + sortString + "&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
 
 					var actualHTML = JSON.parse(response.body).result.html;
 
@@ -699,7 +699,7 @@ var getCPUs = function(sortOptions, cb){
 		}
 	}
 
-	request("https://pcpartpicker.com/parts/cpu/fetch/?mode=list&xslug=&search=", function(error, response, html1){
+	request("https://pcpartpicker.com/products/cpu/fetch/?xcx=0" + sortString + "&mode=list&xslug=&search=", function(error, response, html1){
 
 		var numPages = 1;
 
@@ -711,7 +711,7 @@ var getCPUs = function(sortOptions, cb){
 
 			if (q < numPages){	
 
-				request("https://pcpartpicker.com/products/cpu/fetch/?xcx=0&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
+				request("https://pcpartpicker.com/products/cpu/fetch/?xcx=0" + sortString + "&page=" + (q + 1) + "&mode=list&xslug=&search=", function(error, response, html){
 
 					var actualHTML = JSON.parse(response.body).result.html;
 

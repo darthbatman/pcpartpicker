@@ -102,7 +102,7 @@ multiple values separated by comma
 
 # Motherboard
 
-### socket (k)
+### socket (s)
 
 AM1 = 27
 AM3 = 3
