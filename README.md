@@ -1,6 +1,10 @@
 # pcpartpicker
 Node.js API to retrieve parts from PCPartPicker
 
+## Future Plans
+Integrate this project with AngularJS
+https://angularjs.org/
+
 # examples
 
 ### usage
