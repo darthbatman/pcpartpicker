@@ -1,0 +1,42 @@
+{
+  "name": "pcpartpicker",
+  "version": "1.0.3",
+  "description": "Gets parts from PCPartPicker",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "request": "^2.72.0",
+    "firebase": "^4.1.3",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "handlebars": "^4.0.10",
+    "hbsfy": "^2.7.0",
+    "jquery": "^3.2.1",
+    "matchdep": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darthbatman/pcpartpicker.git"
+  },
+  "keywords": [
+    "pcpartpicker",
+    "pc",
+    "part-picker",
+    "part",
+    "picker",
+    "desktop"
+  ],
+  "author": "Rishi Masand <masandrishi@gmail.com> (https://github.com/darthbatman)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darthbatman/pcpartpicker/issues"
+  },
+  "homepage": "https://github.com/darthbatman/pcpartpicker#readme"
+}
