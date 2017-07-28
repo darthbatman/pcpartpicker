@@ -67,3 +67,67 @@ pins	t
 288		14
 
 multiple types separated by comma
+
+# CPU
+
+### socket (k)
+
+AM1 = 27
+AM3 = 3
+AM3+ = 4
+AM3/AM2+ = 6
+AM4 = 33
+BGA413 = 8
+BGA559 = 10
+BGA1023 = 25
+C32 = 32
+FM1 = 20
+FM2 = 23
+FM2+ = 26
+G34 = 31
+LGA771 = 12
+LGA775 = 13
+LGA1150 = 24
+LGA1151 = 30
+LGA1155 = 14
+LGA1156 = 15
+LGA1356 = 37
+LGA1366 = 16
+LGA2011 = 21
+LGA2011-3 = 28
+LGA2066 = 35
+PGA988 = 18
+
+multiple values separated by comma
+
+# Motherboard
+
+### socket (k)
+
+AM1 = 27
+AM3 = 3
+AM3+ = 4
+AM3/AM2+ = 6
+AM4 = 33
+BGA413 = 8
+BGA559 = 10
+BGA1023 = 25
+C32 = 32
+FM1 = 20
+FM2 = 23
+FM2+ = 26
+G34 = 31
+LGA771 = 12
+LGA775 = 13
+LGA1150 = 24
+LGA1151 = 30
+LGA1155 = 14
+LGA1156 = 15
+LGA1356 = 37
+LGA1366 = 16
+LGA2011 = 21
+LGA2011-3 = 28
+LGA2066 = 35
+PGA988 = 18
+
+multiple values separated by comma

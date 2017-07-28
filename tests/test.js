@@ -1,6 +1,10 @@
 var pcpartpicker = require("../pcpartpicker.js");
 
-pcpartpicker.getCPUs(function(CPUs){
+var cpuSortOptions = {
+	"socket": ["LGA2011", "LGA1156"],
+};
+
+pcpartpicker.getCPUs(cpuSortOptions, function(CPUs){
 	console.log(CPUs);
 });
 
@@ -8,7 +12,11 @@ pcpartpicker.getCoolers(function(coolers){
 	console.log(coolers);
 });
 
-pcpartpicker.getMotherboards(function(mobos){
+var moboSortOptions = {
+	"socket": ["LGA2011", "LGA1156"],
+};
+
+pcpartpicker.getMotherboards(moboSortOptions, function(mobos){
 	console.log(mobos);
 });
 

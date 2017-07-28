@@ -1,0 +1,938 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1044.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"e2df38885d","agent":"","transactionName":"Y1NWYkRSXUBRAkIMWVoZckNYUEdaXw8ZFUZrVVtEUx1DQV8FQwZCGkBdU0FACUNCDlIQVUBpQl9TRA==","applicationID":"285320","errorBeacon":"bam.nr-data.net","applicationTime":44}</script>
+
+    <title>Intel - Core i7-7740X 4.3GHz Quad-Core Processor (BX80677I77740X) - PCPartPicker</title>
+
+    <meta name='description' content=''>
+    <meta name='viewport' content='width=1280'>
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <meta name="application-name" content="PCPartPicker"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
+    <link href='//fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
+
+    
+    <link rel="stylesheet" type="text/css" href="//cdn.pcpartpicker.com/static/forever/hash/site-20ccfe374ac50a01b612fbe716a4179f.css" />
+    <script type="text/javascript" src="//cdn.pcpartpicker.com/static/forever/hash/site-6fb37228fb21d6168d640ed829ac8baa.js"></script>
+    
+    
+
+    <!--
+
+    Moff Jerjerrod: Lord Vader, this is an unexpected pleasure. We're honored by your presence.
+    Darth Vader: You may dispense with the pleasantries, Commander. I'm here to put you back on schedule.
+    Moff Jerjerrod: I assure you, Lord Vader, my men are working as fast as they can.
+    Darth Vader: Perhaps I can find new ways to motivate them.
+    Moff Jerjerrod: I tell you, this station will be operational as planned.
+    Darth Vader: The Emperor does not share your optimistic appraisal of the situation.
+    Moff Jerjerrod: But he asks the impossible. I need more men.
+    Darth Vader: Then perhaps you can tell him when he arrives.
+    Moff Jerjerrod: The Emperor's coming here?
+    Darth Vader: That is correct, Commander. And, he is most displeased with your apparent lack of progress.
+    Moff Jerjerrod: We shall double our efforts.
+    Darth Vader: I hope so, Commander, for your sake. The Emperor is not as forgiving as I am.
+
+     -->
+
+    
+
+<link rel="stylesheet" type="text/css" href="//cdn.pcpartpicker.com/static/forever/hash/gallery-764c4ebe1115c7cf909dfb40680589d9.css" />
+<script type="text/javascript" src="//cdn.pcpartpicker.com/static/forever/hash/gallery-545495f72e98cc0f2e13a26abc118f9e.js"></script>
+
+
+
+    <script>
+      var global_country_sign = '$';
+      $(document).ready(function(){
+        init_country_selector('us');
+        init_live_search(undefined, undefined, true);
+        init_confirm_dialog();
+        init_common_buttons();
+        make_drop_nav('.nav-parts', '.browse-parts-tray');
+        make_drop_nav('.search-parts', '.search-tray', function() {
+          $('#search_q').focus();
+        });
+        
+      });
+      
+    $(document).ready(function(){
+        
+        init_carousel('.build-carousel', 7);
+        
+        $('#history_days').change(function() {
+            window.location.search = '?history_days=' + $('#history_days').val();
+        })
+
+
+        $('#part_add_partlist').click(function() { pp_partlist_add('FJL7YJ', parseInt($('#part_add_partlist_quantity').val())); return false; });
+
+        var phistmulti = [{"data":[[1490831355000,null],[1498856836000,null],[1498856836000,37369],[1498856836000,37369],[1498936136000,37102],[1498936136000,37102],[1498940283000,37102],[1498940283000,null],[1498940283000,37102],[1498940283000,null],[1500758052000,null],[1500758052000,35239],[1500758052000,null],[1500758052000,35239],[1501182593000,35147],[1501182593000,35147],[1501199355000,35147]],"label":"Newegg Marketplace"},{"data":[[1490831355000,null],[1500398732000,null],[1500398732000,35498],[1501199355000,35498]],"label":"Directron"},{"data":[[1490831355000,null],[1497977750000,null],[1497977750000,34999],[1497984314000,34999],[1497984314000,null],[1497986751000,null],[1497986751000,34999],[1498002296000,34999],[1498002296000,null],[1498004751000,null],[1498004751000,34999],[1498011333000,34999],[1498011333000,null],[1498013751000,null],[1498013751000,34999],[1498020330000,34999],[1498020330000,null],[1498022752000,null],[1498022752000,34999],[1498031751000,35098],[1498038382000,35098],[1498038382000,null],[1498040751000,null],[1498040751000,35098],[1498493761000,35098],[1498493761000,null],[1498496185000,null],[1498496185000,35098],[1500335751000,34999],[1500448250000,35098],[1501199355000,35098]],"label":"Newegg"},{"data":[[1490831355000,null],[1498410012000,null],[1498410012000,47999],[1501199355000,47999]],"label":"NCIX US"},{"data":[[1490831355000,null],[1500536461000,null],[1500536461000,34489],[1500730856000,34884],[1500950522000,34179],[1501199355000,34179]],"label":"OutletPC"},{"data":[[1490831355000,null],[1499790674000,null],[1499790674000,34799],[1500319856000,34499],[1500568248000,34489],[1500661843000,34189],[1501199355000,34189]],"label":"SuperBiiz"},{"data":[[1490831355000,39375],[1497878228000,39375],[1497878228000,null],[1497878228000,39375],[1497892628000,34999],[1497892628000,34999],[1499433375000,34895],[1499433375000,34895],[1501175717000,34797],[1501175717000,34797],[1501199355000,34797]],"label":"B&H"}];
+        var phist_plots = [];
+        for (var i in phistmulti) {
+            phist_plots.push({
+                label_id: i,
+                data: phistmulti[i].data,
+                label: phistmulti[i].label,
+                lines: {
+                    show: true,
+                    steps: true,
+                    lineWidth: 2
+                },
+                shadowSize: 0
+            });
+        }
+        var plot = $.plot($('#price_history'),
+            phist_plots,
+            {
+                crosshair: {
+                    mode: "x"
+                },
+                grid: {
+                    hoverable: true,
+                    autoHighlight: false
+                },
+                legend: {
+                    show: false,
+                },
+                xaxis: {
+                    mode: 'time',
+                    minTickSize: [1, "day"],
+                    
+                    tickSize: [14, "day"]
+                    
+                },
+                yaxis: {
+                    tickFormatter: function(v, axis) { v /= 100.0; return '$' + v.toFixed(2); }
+                }
+            }
+        );
+
+        function get_last_price(mseries) {
+            if (mseries.data.length == 0)
+                return null;
+            return mseries.data[mseries.data.length - 1][1];
+        }
+        function render_price(x) {
+            if (x == null || x <= 0)
+                return '';
+            return format_price('$', x);
+        }
+        function update_tooltip_prices(prices, timestamp) {
+            var date = new Date(parseInt(timestamp));
+            var datenow = new Date();
+            var hoursago = Math.floor((datenow - date) / (60 * 60 * 1000));
+            var daysago = parseInt(hoursago / 24);
+            hoursago = hoursago - (daysago * 24);
+            var agostr = '';
+            if (daysago > 0 || hoursago > 0) {
+                agostr = ' (';
+                if (daysago > 0)
+                    agostr = agostr + daysago + 'd ';
+                if (hoursago > 0)
+                    agostr = agostr + hoursago + 'h';
+                agostr = agostr + ' ago)';
+            }
+            $('#price_history_tooltip_date').text((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear() + agostr);
+            var lowest_price = null;
+            for(var i = 0; i < prices.length; ++i) {
+                var price = prices[i];
+                if (price != null && (lowest_price == null || price < lowest_price))
+                    lowest_price = price;
+            }
+            for(var i = 0; i < flot_data.length; ++i) {
+                var price = prices[flot_data[i].label_id];
+                $('#price_history_price_' + flot_data[i].label_id + ' td.price-history-price').text(render_price(price));
+                if (price != null && price == lowest_price)
+                    $('#price_history_price_' + flot_data[i].label_id).addClass('price_history_lowest');
+                else
+                    $('#price_history_price_' + flot_data[i].label_id).removeClass('price_history_lowest');
+            }
+        }
+
+        var flot_data = plot.getData();
+        for(var i = 0; i < flot_data.length; ++i)
+            $('#price_history_tooltip table tbody').append('<tr id="price_history_price_' + flot_data[i].label_id + '"><td class="price-history-tooltip-color" style="background-color:' + flot_data[i].color + ';"></td><td class="price-history-tooltip-merchant">' + flot_data[i].label + '</td><td class="price-history-price"></td></tr>');
+        update_flot_legend(plot, '#price_history_legend');
+
+        var latestPosition = null;
+        var updateLegendTimeout = null;
+        var ctx = plot.getCanvas().getContext('2d');
+
+        function updateLegend() {
+            updateLegendTimeout = null;
+            var pos = latestPosition;
+            var axes = plot.getAxes();
+            if (pos.x < axes.xaxis.min || pos.x > axes.xaxis.max || pos.y < axes.yaxis.min || pos.y > axes.yaxis.max)
+                return;
+
+            var i, j, dataset = plot.getData();
+            var prices = [];
+            for (i = 0; i < dataset.length; ++i) {
+                var series = dataset[i];
+                var curval = null;
+                for (j = 0; j < series.data.length; ++j)
+                    if (series.data[j][0] < pos.x)
+                        curval = series.data[j][1];
+                    else
+                        break;
+                prices.push(curval);
+            }
+            timestamp = pos.x;
+            update_tooltip_prices(prices, timestamp);
+
+            var o = plot.pointOffset({x: pos.x, y: pos.y});
+            var leftpos = o.left + 50;
+            var tooltip_width = $('#price_history_tooltip').width();
+            if ((pos.pageX - plot.offset().left) + 43 + tooltip_width > plot.width())
+                leftpos = leftpos - 100 - tooltip_width;
+            var d = {
+                position: "absolute",
+                display: "block",
+                top: 6,
+                left: leftpos,
+            };
+            $("#price_history_tooltip").css(d);
+        }
+        $('#price_history').mouseout(function(e){
+            $('#price_history_tooltip').hide();
+        });
+        $('#price_history').bind('plothover', function (e, pos, item) {
+            latestPosition = pos;
+            var offset = plot.offset();
+            var x = pos.pageX - offset.left;
+            var y = pos.pageY - offset.top;
+            if (x >= 0 && x < plot.width() && y >= 0 && y < plot.height()) {
+                if (!updateLegendTimeout)
+                    updateLegendTimeout = setTimeout(updateLegend, 20);
+            }
+            else {
+                if (updateLegendTimeout) {
+                    clearTimeout(updateLegendTimeout);
+                    updateLegendTimeout = null;
+                }
+                $('#price_history_tooltip').hide();
+            }
+        });
+
+    });
+    var carousel_images = [
+     
+     {src:"https://images-na.ssl-images-amazon.com/images/I/514q5szhFSL.jpg",thumb:"https://images-na.ssl-images-amazon.com/images/I/514q5szhFSL.jpg"},
+     
+     {src:"https://images-na.ssl-images-amazon.com/images/I/51nJvdJ5dpL.jpg",thumb:"https://images-na.ssl-images-amazon.com/images/I/51nJvdJ5dpL.jpg"}
+     
+   ];
+
+    </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-16428016-1']);
+      _gaq.push(['_setDomainName', 'pcpartpicker.com']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <!-- [if lt IE 9]>
+      <script>
+        document.createElement("header")
+        document.createElement("nav");
+        document.createElement("main");
+        document.createElement("footer");
+      </script>
+    <![endif] -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="page-container">
+        <div class="pcpp-header">
+          <a href="/"><h1>PCPartPicker</h1></a>
+          <ul class="user-nav">
+          
+            <li><a href="/accounts/login/">Log In</a></li>
+            <li><a href="/accounts/register/">Register</a></li>
+          
+            <li>
+              <form method="post" action="/qapi/switch_country/" id="form_country_select">
+              <input type='hidden' name='csrfmiddlewaretoken' value='unmunHTWkLr7X538mlFqcQzXR7yDtl6i' />
+              <select id="country_select" class="language-selector flag-us" name="cc">
+                
+                
+                <option value="au" >Australia</option>
+                
+                
+                
+                <option value="be" >Belgium</option>
+                
+                
+                
+                <option value="ca" >Canada</option>
+                
+                
+                
+                
+                
+                <option value="de" >Deutschland</option>
+                
+                
+                
+                <option value="es" >España</option>
+                
+                
+                
+                <option value="fr" >France</option>
+                
+                
+                
+                <option value="in" >India</option>
+                
+                
+                
+                
+                
+                <option value="it" >Italia</option>
+                
+                
+                
+                
+                
+                
+                
+                <option value="nz" >New Zealand</option>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <option value="uk" >United Kingdom</option>
+                
+                
+                
+                <option value="us" selected="selected">United States</option>
+                
+                
+              </select>
+              <input type="hidden" name="url" value="/product/FJL7YJ/intel-core-i7-7740x-43ghz-quad-core-processor-bx80677i77740x" id="form_country_select_url"/>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <nav>
+        <div class="page-container">
+          <div class="nav-wrapper">
+            <div class="primary-nav">
+              <a href="/list/" class="nav-build"><span>Start a</span> System Build</a><a href="/guide/" class="nav-guides"><span>View the</span> Build Guides</a><a href="/builds/" class="nav-builds"><span>See all</span> Completed Builds</a><a id="browse-parts-button" href="/products/" class="nav-parts"><span>Browse by</span> Individual Parts<span class="nav-dropdown"></span></a>
+            </div>
+            <div class="secondary-nav">
+              <div class="sub-links">
+                <a href="/products/pricedrop/">Price Drops</a><a href="/trends/">Price Trends</a><a href="/forums/">Forums</a><a href="/blog/">Blog</a>
+              </div>
+              <div class="search"><a href="/search/" class="search-parts"></a></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div>
+    
+      <div class="part" itemscope itemtype="http://schema.org/Product">
+        <div class="hero">
+          <div class="page-container">
+            <div class="title">
+              <meta itemprop="brand" content="Intel" />
+              <meta itemprop="mpn" content="BX80677I77740X" />
+              <meta itemprop="name" content="Intel - Core i7-7740X 4.3GHz Quad-Core Processor" />
+              <meta itemprop="image" content="https://images-na.ssl-images-amazon.com/images/I/514q5szhFSL.jpg" />
+              <h4 class="kind">CPU</h4>
+              <h1 class="name">Intel - Core i7-7740X 4.3GHz Quad-Core Processor</h1>
+              
+              <div class="rating">
+                <ul class="stars">
+                  <li class="empty-star"><li class="empty-star"><li class="empty-star"><li class="empty-star"><li class="empty-star">
+                </ul>
+                <p><span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">( <span itemprop="ratingValue">0</span> Average / <span itemprop="ratingCount">0</span> Ratings )</span></p>
+              </div> <!-- rating -->
+              
+            </div> <!-- title -->
+          </div> <!-- page container -->
+        </div> <!-- hero -->
+        
+        <div class="image-gallery">
+          <div class="page-container">
+            <div class="owl-carousel build-carousel owl-theme">
+              
+              <a class="item" onclick="show_gallery(0, carousel_images);return false;"><img src="https://images-na.ssl-images-amazon.com/images/I/514q5szhFSL.jpg" /></a>
+              
+              <a class="item" onclick="show_gallery(1, carousel_images);return false;"><img src="https://images-na.ssl-images-amazon.com/images/I/51nJvdJ5dpL.jpg" /></a>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="details">
+          <div class="page-container">
+            <div class="column-wrapper">
+              <div class="left-column">
+                
+                <div class="block">
+                    <table class="action-box">
+                      <tr>
+                        <td colspan="2" class="part-action-box-add">
+                          Quantity:
+                          <select class="quantity" id="part_add_partlist_quantity">
+                            
+                            <option value="1">1</option>
+                            
+                          </select>
+                          <a id="part_add_partlist" href="#add_to_partlist" class="partlist-btn">Add to Part List</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="part-action-box-favorite single-action">
+                          
+                          <a href="#save_to_favorites" id="part_add_favorite" class="favorites-btn">Save to Favorites</a>
+                          
+                        </td>
+                        <td class="part-action-box-inventory single-action">
+                          <a href="#add_to_inventory" id="part_add_inventory" class="inventory-btn">Add to Inventory</a>
+                        </td>
+                      </tr>
+                    </table> <!-- action box --></div>
+
+                
+
+                
+                
+                <div class="specs block">
+                  <h2>Specifications</h2>
+                    
+                      <h4>Manufacturer</h4>
+                        
+                          Intel
+                        
+                    
+                      <h4>Part #</h4>
+                        
+                          BX80677I77740X
+                        
+                    
+                      <h4>Data Width</h4>
+                        
+                          64-bit
+                        
+                    
+                      <h4>Socket</h4>
+                        
+                          LGA2066
+                        
+                    
+                      <h4>Operating Frequency</h4>
+                        
+                          4.3GHz
+                        
+                    
+                      <h4>Max Turbo Frequency</h4>
+                        
+                          4.5GHz
+                        
+                    
+                      <h4>Cores</h4>
+                        
+                          4
+                        
+                    
+                      <h4>L1 Cache</h4>
+                        
+                          4 x 32KB Instruction<br/>4 x 32KB Data
+                        
+                    
+                      <h4>L2 Cache</h4>
+                        
+                          4 x 256KB
+                        
+                    
+                      <h4>L3 Cache</h4>
+                        
+                          1 x 8MB
+                        
+                    
+                      <h4>Lithography</h4>
+                        
+                          14 nm
+                        
+                    
+                      <h4>Thermal Design Power</h4>
+                        
+                          112 Watts
+                        
+                    
+                      <h4>Includes CPU Cooler</h4>
+                        
+                          No
+                        
+                    
+                      <h4>Simultaneous Multithreading</h4>
+                        
+                          Yes: Hyper-Threading
+                        
+                    
+                      <h4>Maximum Supported Memory</h4>
+                        
+                          64GB
+                        
+                    
+                      <h4>Integrated Graphics</h4>
+                        
+                          No
+                        
+                    
+                </div> <!-- specs -->
+                
+                
+                
+                
+                <div class="block">
+                    <h2>Compatible Parts</h2>
+                    <ul class="find-compatible-parts">
+                      
+                      <li><a href="/products/cpu-cooler/?compatible_with=FJL7YJ">View Compatible CPU Coolers</a></li>
+                      
+                      <li><a href="/products/motherboard/?compatible_with=FJL7YJ">View Compatible Motherboards</a></li>
+                      
+                    </ul>
+                </div>
+                
+                
+                
+                
+              </div> <!-- left column -->
+              <div class="right-column">
+                <div class="prices block" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+                  
+                  <meta itemprop='priceCurrency' content='USD' />
+                  <meta itemprop='lowPrice' content='341.79' />
+                  <meta itemprop='highPrice' content='479.99' />
+                  <meta itemprop='offerCount' content='8' />
+                  
+                  <h2>Prices</h2>
+                  
+                  <table class="wide-table">
+                    <thead>
+                      <th class="th-merchant">Merchant</th>
+                      <th class="th-base">Base</th>
+                      <th class="th-promo">Promo</th>
+                      <th class="th-shipping">Shipping</th>
+                      <th class="th-tax">Tax</th>
+                      <th class="th-stock">Availability</th>
+                      <th class="th-total">Total</th>
+                    </thead>
+                    <tbody>
+                      
+                      
+                      <tr class="outletpc ">
+                        <td class="merchant"><a href="/mr/outletpc/FJL7YJ" target="_blank"><img src="//cdn.pcpartpicker.com/static/img/vendor-logos/logo_merchant_outletpc.png" alt="OutletPC"></a></td>
+                        <td class="base"><a href="/mr/outletpc/FJL7YJ" target="_blank">$341.79</a></td>
+                        <td class="promo"></td>
+                        <td class="shipping">
+                          
+                        </td>
+                        <td class="tax"></td>
+                        <td class="stock "></td>
+                        <td class="total"><a href="/mr/outletpc/FJL7YJ" target="_blank">$341.79<span>+</span></a></td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      
+                      <tr class="superbiiz ">
+                        <td class="merchant"><a href="/mr/superbiiz/FJL7YJ" target="_blank"><img src="//cdn.pcpartpicker.com/static/img/vendor-logos/logo_merchant_superbiiz.png" alt="SuperBiiz"></a></td>
+                        <td class="base"><a href="/mr/superbiiz/FJL7YJ" target="_blank">$341.89</a></td>
+                        <td class="promo"></td>
+                        <td class="shipping">
+                          
+                            
+                              +FREE s/h
+                            
+                          
+                        </td>
+                        <td class="tax"></td>
+                        <td class="stock "></td>
+                        <td class="total"><a href="/mr/superbiiz/FJL7YJ" target="_blank">$341.89</a></td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      
+                      <tr class="amazon has-promo">
+                        <td class="merchant"><a href="/mr/amazon/FJL7YJ" target="_blank"><img src="//cdn.pcpartpicker.com/static/img/vendor-logos/logo_merchant_amazon.png" alt="Amazon"></a></td>
+                        <td class="base"><a href="/mr/amazon/FJL7YJ" target="_blank">$347.97</a></td>
+                        <td class="promo"></td>
+                        <td class="shipping">
+                          
+                            
+                              <a href="http://amazon.com/tryprimefree?tag=pcpp-prime-20"><img src="/static/forever/img/amazon-prime.png" alt="Free two-day shipping with Amazon Prime" /></a>
+                            
+                          
+                        </td>
+                        <td class="tax"></td>
+                        <td class="stock in-stock">In stock</td>
+                        <td class="total"><a href="/mr/amazon/FJL7YJ" target="_blank">$347.97</a></td>
+                      </tr>
+                      
+                      <tr class="note">
+                        <td colspan="7">
+                        ( <a href="https://www.amazon.com/gp/offer-listing/B072KTRQ9G?SubscriptionId=AKIAJGZZEZH27SCMC24Q&amp;tag=pcpapi-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B072KTRQ9G">31 new from $344.99</a>.  Last updated 21 minutes ago. )
+                        </td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      
+                      <tr class="bhphotovideo ">
+                        <td class="merchant"><a href="/mr/bhphotovideo/FJL7YJ" target="_blank"><img src="//cdn.pcpartpicker.com/static/img/vendor-logos/logo_merchant_bhphotovideo.png" alt="B&amp;H"></a></td>
+                        <td class="base"><a href="/mr/bhphotovideo/FJL7YJ" target="_blank">$347.97</a></td>
+                        <td class="promo"></td>
+                        <td class="shipping">
+                          
+                            
+                              +FREE s/h
+                            
+                          
+                        </td>
+                        <td class="tax"></td>
+                        <td class="stock in-stock">In stock</td>
+                        <td class="total"><a href="/mr/bhphotovideo/FJL7YJ" target="_blank">$347.97</a></td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      
+                      <tr class="newegg ">
+                        <td class="merchant"><a href="/mr/newegg/FJL7YJ" target="_blank"><img src="//cdn.pcpartpicker.com/static/img/vendor-logos/logo_merchant_newegg.png" alt="Newegg"></a></td>
+                        <td class="base"><a href="/mr/newegg/FJL7YJ" target="_blank">$349.99</a></td>
+                        <td class="promo"></td>
+                        <td class="shipping">
+                          
+                            
+                              +$0.99 s/h
+                            
+                          
+                        </td>
+                        <td class="tax"></td>
+                        <td class="stock in-stock">In stock</td>
+                        <td class="total"><a href="/mr/newegg/FJL7YJ" target="_blank">$350.98</a></td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      
+                      <tr class="neweggmkt ">
+                        <td class="merchant"><a href="/mr/neweggmkt/FJL7YJ" target="_blank"><img src="//cdn.pcpartpicker.com/static/img/vendor-logos/logo_merchant_neweggmkt.png" alt="Newegg Marketplace"></a></td>
+                        <td class="base"><a href="/mr/neweggmkt/FJL7YJ" target="_blank">$351.47</a></td>
+                        <td class="promo"></td>
+                        <td class="shipping">
+                          
+                            
+                              +FREE s/h
+                            
+                          
+                        </td>
+                        <td class="tax"></td>
+                        <td class="stock in-stock">In stock</td>
+                        <td class="total"><a href="/mr/neweggmkt/FJL7YJ" target="_blank">$351.47</a></td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      
+                      <tr class="directron ">
+                        <td class="merchant"><a href="/mr/directron/FJL7YJ" target="_blank"><img src="//cdn.pcpartpicker.com/static/img/vendor-logos/logo_merchant_directron.png" alt="Directron"></a></td>
+                        <td class="base"><a href="/mr/directron/FJL7YJ" target="_blank">$354.98</a></td>
+                        <td class="promo"></td>
+                        <td class="shipping">
+                          
+                        </td>
+                        <td class="tax"></td>
+                        <td class="stock out-of-stock">Out of stock</td>
+                        <td class="total"><a href="/mr/directron/FJL7YJ" target="_blank">$354.98<span>+</span></a></td>
+                      </tr>
+                      
+                      
+                      
+                      
+                      
+                      <tr class="ncixus ">
+                        <td class="merchant"><a href="/mr/ncixus/FJL7YJ" target="_blank"><img src="//cdn.pcpartpicker.com/static/img/vendor-logos/logo_merchant_ncixus2.png" alt="NCIX US"></a></td>
+                        <td class="base"><a href="/mr/ncixus/FJL7YJ" target="_blank">$479.99</a></td>
+                        <td class="promo"></td>
+                        <td class="shipping">
+                          
+                        </td>
+                        <td class="tax"></td>
+                        <td class="stock in-stock">In stock</td>
+                        <td class="total"><a href="/mr/ncixus/FJL7YJ" target="_blank">$479.99<span>+</span></a></td>
+                      </tr>
+                      
+                      
+                      
+                      
+                  </table>
+                  <div class="email-alert">
+                    <form action="/products/pricenotify/add/FJL7YJ/" method="post"><input type='hidden' name='csrfmiddlewaretoken' value='unmunHTWkLr7X538mlFqcQzXR7yDtl6i' />
+                    <p>Send an e-mail alert if the price drops to: $ <input type="text" name="amount" value="341.78"><input type="submit" value="Set"></p>
+                    <p class="note">(Note: Price alerts now use your <a href="">merchant selections and tax settings</a>.)</p>
+                    </form>
+                  </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  <div style="margin-top:20px;color:#888;font-size:0.75em;">
+                    * Product prices and availability are accurate as of the date/time indicated and are subject to change. Any price and availability information displayed on Amazon.com at the time of purchase will apply to the purchase of this product.
+                  </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                </div> <!-- prices -->
+
+                
+
+                
+                <div class="price-history block">
+                  <h2>Price History <span class="title-note">(Excluding Tax)</span>
+                     <span class="header-widget-right">
+                     History:
+                        <select name="history_days" id="history_days">
+                          
+                          <option  value="60">60 days</option>
+                          
+                          <option selected="selected" value="120">120 days</option>
+                          
+                          <option  value="180">180 days</option>
+                          
+                          <option  value="365">1 year</option>
+                          
+                          <option  value="730">2 years</option>
+                          
+                        </select>
+                     </span>
+                  </h2>
+                  <div>
+                    <div style="position:relative;">
+                      <div>
+                        <div id="price_history_legend"></div>
+                        <div id="price_history"></div>
+                        <div id="price_history_tooltip"><p class="price-history-tooltip-date" id="price_history_tooltip_date"></p><table class="price-history-tooltip"><tbody></tbody></table></div>
+                        <!-- <div id="price_history_tooltip"><table class="price-history-tooltip"><tbody><tr><td class="price-history-tooltip-date" colspan="3" id="price_history_tooltip_date"></td></tr></tbody></table></div> -->
+                      </div>
+                      <div>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div> <!-- price history -->
+                
+
+                
+
+              </div> <!-- right column -->
+            </div> <!-- column wrapper -->
+        </div> <!-- page container -->
+      </div> <!-- details -->
+
+    </div>
+    <div class="drop">
+      <div id="browse-parts-tray-container">
+        <div class="page-container">
+          <div class="browse-parts-tray">
+            <div class="parts-tray-block-col core-parts">
+              <div>
+                <a href="/products/cpu/" class="parts-tray-block parts-tray-heading"><img src="//cdn.pcpartpicker.com/static/forever/img/nav-cpu.png" alt="CPU" />CPU</a>
+                <a href="/products/cpu-cooler/" class="parts-tray-block parts-tray-heading"><img src="//cdn.pcpartpicker.com/static/forever/img/nav-cpucooler.png" alt="CPU Cooler" />CPU Cooler</a>
+                <a href="/products/motherboard/" class="parts-tray-block parts-tray-heading"><img src="//cdn.pcpartpicker.com/static/forever/img/nav-motherboard.png" alt="Motherboard" />Motherboard</a>
+                <a href="/products/memory/" class="parts-tray-block parts-tray-heading"><img src="//cdn.pcpartpicker.com/static/forever/img/nav-memory.png" alt="Memory" />Memory</a>
+              </div>
+              <div>
+                <a href="/products/internal-hard-drive/" class="parts-tray-block parts-tray-heading"><img src="//cdn.pcpartpicker.com/static/forever/img/nav-ssd.png" alt="Storage" />Storage</a>
+                <a href="/products/video-card/" class="parts-tray-block parts-tray-heading"><img src="//cdn.pcpartpicker.com/static/forever/img/nav-videocard.png" alt="Video Card" />Video Card</a>
+                <a href="/products/power-supply/" class="parts-tray-block parts-tray-heading"><img src="//cdn.pcpartpicker.com/static/forever/img/nav-powersupply.png" alt="Power Supply" />Power Supply</a>
+                <a href="/products/case/" class="parts-tray-block parts-tray-heading"><img src="//cdn.pcpartpicker.com/static/forever/img/nav-case.png" alt="Case" />Case</a>
+              </div>
+            </div>
+            <div class="parts-tray-list-col parts-two">
+              <ul>
+                <li class="parts-tray-heading">Cooling</li>
+                <li><a href="/products/case-fan/">Case Fans</a></li>
+                <li><a href="/products/fan-controller/">Fan Controllers</a></li>
+                <li><a href="/products/thermal-paste/">Thermal Compound</a></li>
+              </ul>
+              <ul>
+                <li class="parts-tray-heading">Drives</li>
+                <li><a href="/products/optical-drive/">Optical Drives</a></li>
+              </ul>
+              <ul>
+                <li class="parts-tray-heading">Expansion</li>
+                <li><a href="/products/sound-card/">Sound Cards</a></li>
+                <li><a href="/products/wired-network-card/">Wired Networking</a></li>
+                <li><a href="/products/wireless-network-card/">Wireless Networking</a></li>
+              </ul>
+            </div>
+            <div class="parts-tray-list-col parts-three">
+              <ul>
+                <li class="parts-tray-heading">Displays</li>
+                <li><a href="/products/monitor/">Monitors</a></li>
+              </ul>
+               <ul>
+                <li class="parts-tray-heading">External Storage</li>
+                <li><a href="/products/external-hard-drive/">External Hard Drives</a></li>
+              </ul>
+              <ul>
+                <li class="parts-tray-heading">Peripherals</li>
+                <li><a href="/products/headphones/">Headphones</a></li>
+                <li><a href="/products/keyboard/">Keyboards</a></li>
+                <li><a href="/products/mouse/">Mice</a></li>
+                <li><a href="/products/speakers/">Speakers</a></li>
+                <li><a href="/products/ups/">Uninterruptible Power Supplies</a></li>
+              </ul>
+            </div>
+            <div class="parts-tray-list-col parts-three">
+              <ul>
+                <li class="parts-tray-heading">Software</li>
+                <li><a href="/products/software/#W=1">Antivirus</a></li>
+                <li><a href="/products/software/#W=8">Audio &amp; Video</a></li>
+                <li><a href="/products/software/#W=2">Backup</a></li>
+                <li><a href="/products/software/#W=3">Design &amp; Illustration</a></li>
+                <li><a href="/products/software/#W=5">Internet Security</a></li>
+                <li><a href="/products/software/#W=7">Office &amp; Productivity</a></li>
+                <li><a href="/products/os/">Operating Systems</a></li>
+                <li><a href="/products/software/#W=6">Photography</a></li>
+              </ul>
+            </div>
+            <div class="parts-tray-list-col parts-four">
+            </div>
+            <div class="parts-tray-col-clear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="drop">
+      <div id="search-tray-container">
+        <div class="page-container">
+          <div class="search-tray search-box">
+            <form action="/search/" method="get">
+              <input type="hidden" name="cc" value="us"/>
+              <input id="search_q" type="text" name="q" size="32" autocomplete="off" />
+              <input id="search_go" type="submit" value="Search" />
+            </form>
+            <div id="search_result"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="page-container">
+        <div class="footer-branding">
+          <div class="copyright-notice">&copy;2017 PCPartPicker, LLC.  All rights reserved.</div>
+          <div class="switch-to-mobile"><a href="?flavor=mobile">Switch to Mobile Version</a></div>
+          
+          
+        </div>
+        <ul class="footer-nav">
+          <h4>Sections</h4>
+          <li><a href="/list/">System Builds</a></li>
+          <li><a href="/guide/">Build Guides</a></li>
+          <li><a href="/builds/">Completed Builds</a></li>
+          <li><a href="/products/">Individual Parts</a></li>
+        </ul>
+        <ul class="footer-nav">
+          <h4>PCPP</h4>
+          <li><a href="/forums/">Forums</a></li>
+          <li><a href="/products/pricedrop/">Price Drops</a></li>
+          <li><a href="/trends/">Price Trends</a></li>
+          <li><a href="/blog/">PCPP Blog</a></li>
+        </ul>
+        <ul class="footer-nav">
+          <h4>PCPP</h4>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact &amp; Imprint</a></li>
+          <li><a href="/tos/">Terms of Service</a></li>
+          <li><a href="/code-of-conduct/">User Code of Conduct</a></li>
+          <li><a href="/code-of-conduct/industry-affiliate/">Industry Code of Conduct</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/disclosure/">Disclosure</a></li>
+        </ul>
+        <ul class="footer-nav">
+          <h4>Elsewhere</h4>
+          <li><a href="https://www.facebook.com/pcpartpicker">Facebook</a></li>
+          <li><a href="https://instagram.com/pcpartpicker">Instagram</a></li>
+          <li><a href="https://twitch.tv/pcpartpicker">Twitch</a></li>
+          <li><a href="https://twitter.com/pcpartpicker">Twitter</a></li>
+          <li><a href="https://www.youtube.com/user/pcpartpicker">YouTube</a></li>
+        </ul>
+      </div>
+      <!-- <div class="page-container">
+        <div class="pcpp-network">
+          <h4>PCPP Network</h4>
+          <div class="title-divider"></div>
+          <ul>
+            <li><a href="http://pcpartpicker.com" id="pcpp"></a></li>
+          </ul>
+        </div>
+      </div> -->
+      
+    </footer>
+    <div id="default_dialog" class="hidden-dialog"></div>
+  </body>
+
+
+  <script>
+    $(document).ready(function(){
+      $('.language-selector').customSelect();
+      $('span.customSelect').css('width', '');
+      $('span.customSelectInner').css('width', '');
+    });
+  </script>
+</html>
