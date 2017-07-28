@@ -1,6 +1,6 @@
 {
   "name": "pcpartpicker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gets parts from PCPartPicker",
   "main": "pcpartpicker.js",
   "dependencies": {
