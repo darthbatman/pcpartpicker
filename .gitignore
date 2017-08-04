@@ -1,6 +1,6 @@
 .DS_Store
 lib/node_modules
-css
-dist
+css/
 lib/.sass-cache
 lib/package-lock.json
+app/values/fb-creds.js

@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MemDB</title>
+    <title>MemDB</title>
+     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body>
-<script src="dist/app.js"></script>
+<body ng-app="app">
+
+  <div ng-include="'partials/navbar.html'">
+
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 main-container">
+      <div ng-view></div>
+    </div>
+  </div>
+
+  <!-- third-party scripts -->
+  <script type="text/javascript" src="lib/node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js">
+  </script>
+  <script type="text/javascript" src="lib/node_modules/angular/angular.min.js"></script>
+  <script type="text/javascript" src="lib/node_modules/angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="lib/node_modules/firebase/firebase.js"></script>
+  <!-- app files -->
+  <script type="text/javascript" src="app/app.js"></script>
+  <!-- providers -->
+  <script src="app/values/fb-creds.js"></script>
+  <script src="app/factories/user-factory.js"></script>
+  <script src="app/factories/todo-factory.js"></script>
+  <script src="app/factories/filter-factory.js"></script>
+  <!-- controllers -->
+  <script src="app/controllers/user-controller.js"></script>
+  <script src="app/controllers/todo-controller.js"></script>
+  <script src="app/controllers/todo-add-controller.js"></script>
+  <script src="app/controllers/nav-controller.js"></script>
+  <script src="app/controllers/todo-detail-controller.js"></script>
+  <script src="app/controllers/todo-edit-controller.js"></script>
 </body>
 </html>
