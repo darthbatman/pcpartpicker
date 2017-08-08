@@ -1,0 +1,24 @@
+<div class="col-xs-12">
+  <h1>Choose your Motherboard Socket</h1>
+  <div ng-controller="SocketController">
+    <form name="myForm">
+      <label for="singleSelect"></label><br>
+      <select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+        <option value="">Socket</option> <!-- not selected / blank option -->
+        <option value="{{data.option1}}">AM4</option> <!-- interpolation -->
+        <option value="option-2">TR4</option>
+        <option value="option-2">LGA1151</option>
+        <option value="option-3">LGA2011-3</option>
+        <option value="option-4">LGA2066</option>
+      </select><br>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="panel-body">
+    <div class="col-xs-1"><input type="checkbox" ng-model="socket.isCompleted" ng-change="updateTaskStatus(socket)"></div>
+    <div class="col-xs-7 socket"><a href="#!/socket/view/{{socket.id}}">{{socket.value}}</a></div>
+    <div class="col-xs-1 delete"><button class="btn btn-danger" ng-click="deleteTask(socket.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></div>
+  </div>
+</div> -->
