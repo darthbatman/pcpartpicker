@@ -1,6 +1,10 @@
 'use strict';
 
-app.controller("UserController", function($scope, $window, UserFactory) {
+app.controller("UserController", function($scope, $window, UserFactory, MoboFactory) {
+
+  // let moboSortOptions = "TR4"
+
+  // MoboFactory.getMobos(moboSortOptions);
 
   $scope.account = {
     email: "",
@@ -21,7 +25,7 @@ app.controller("UserController", function($scope, $window, UserFactory) {
     UserFactory.loginUser($scope.account)
     .then( (userData) => {
       console.log("userData", userData);
-      $window.location.href = '#!/socket/view';
+      $window.location.href = '#!/comp/view';
     });
   };
 });

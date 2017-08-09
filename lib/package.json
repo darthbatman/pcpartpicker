@@ -6,9 +6,11 @@
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-browserify": "^5.0.0",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
-    "matchdep": "^1.0.1"
+    "matchdep": "^1.0.1",
+    "browserify": "^13.0.0"
   },
   "dependencies": {
     "angular": "^1.6.5",

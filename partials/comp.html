@@ -1,0 +1,18 @@
+<div class="row">
+
+  <h1>My Computers</h1>
+
+  <div ng-repeat="comp in compData">
+    <div class="col-sm-4">
+      <div class="card">
+          <div class="card-block">
+            <div class="add"><button class="btn btn-success" ng-click="addMobo(comp.id)"><a ng-href="">Add Mobo</a><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div>
+            <h3 class="card-title">{{comp.title}}</h3>
+            <h4 class="card-description"> {{comp.description}}</h4>
+            <div class="delete"><button class="btn btn-danger" ng-click="deleteMobo(comp.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></div>
+            <div class="viewBoard"><button ng-click="viewComp(comp.id)">View Motherboards in Computers</button></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 'use strict';
 
 let app = angular.module("app", ["ngRoute"])
-.constant("FirebaseUrl", "https://angularjs-f1fd4.firebaseio.com");
+.constant("FirebaseUrl", "https://angularjs-f1fd4.firebaseio.com/");
 
 let isAuth = (UserFactory) => {
   return new Promise ( (resolve, reject) => {
@@ -21,6 +21,16 @@ app.config( ($routeProvider) => {
   .when('/', {
     templateUrl: 'partials/login.html',
     controller: 'UserController'
+  })
+  .when('/comp/view', {
+    templateUrl: 'partials/comp.html',
+    controller: 'CompController',
+    resolve: {isAuth}
+  })
+  .when('/comp/new', {
+    templateUrl: 'partials/compAddForm.html',
+    controller: 'CompAddController',
+    resolve: {isAuth}
   })
   .when('/socket/view', {
     templateUrl: 'partials/socket.html',
