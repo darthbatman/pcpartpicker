@@ -3,10 +3,6 @@
 app.factory("SocketFactory", function($q, $http, FirebaseUrl) {
 
 
-
-
-  
-  // let 
 });
 
 //   let getSocketList = (userId) => {

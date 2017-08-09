@@ -1,9 +1,15 @@
 'use strict';
 
-app.controller("MoboController", function($scope, $window, MoboFactory) {
-  let moboSortOptions = "TR4";
-
-  MoboFactory.getMobos(moboSortOptions);
+app.controller("MoboController", function($scope, $window, MoboFactory, $routeParams) {
+  let moboSortOptions = $routeParams.optionValue;
+  console.log("routeParams", $routeParams.optionValue);
+  MoboFactory.getMobos(moboSortOptions)
+  .then((data) => {
+    console.log("data from getMobos", data);
+  })
+  .catch((err) => {
+    console.log("error from getMobos", err);
+  })
 });
 
 

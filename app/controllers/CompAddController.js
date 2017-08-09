@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("CompAddController", function($scope, $window, Factory, CompFactory, UserFactory) {
+app.controller("CompAddController", function($scope, $window, CompFactory, UserFactory) {
 
   $scope.formTitle = "Create Computer";
   $scope.comp = {
@@ -13,7 +13,7 @@ app.controller("CompAddController", function($scope, $window, Factory, CompFacto
     CompFactory.postNewComp($scope.comp)
     .then( (data) => {
       console.log("new comp data", data);
-      $window.location.href = '/socket/view';
+      $window.location.href = '#!/socket/view';
     });
   };
 

@@ -1,13 +1,20 @@
 'use strict';
 
 app.factory("MoboFactory", function($q, $http, FirebaseUrl) {
-  let getMobos = (options) => {
-    console.log(options);
-    $http.get(`http://localhost:6060/getMobos/${options}`)
-    .then((data) => {
-      console.log(data);
-    });
 
+  let getMobos = (optionValue) => {
+    console.log("optionValue", optionValue);
+    return $q((resolve, reject) => {
+      $http.get(`http://localhost:6060/getMobos/${optionValue}`)
+        .then((moboObj) => {
+          resolve(moboObj.data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   };
-  return {getMobos};
+  return {
+    getMobos
+  };
 });
