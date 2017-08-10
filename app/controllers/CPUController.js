@@ -2,6 +2,8 @@
 
 app.controller("CPUController", function($scope, $window, CPUFactory, CompFactory, MoboFactory, $routeParams) {
  // Needs optionValue data from SocketController
+ 
+  let comp_Id;
 
   let moboSortOptions = $routeParams.optionValue;
   console.log("CPUController optionValue", $routeParams.optionValue);
@@ -17,7 +19,7 @@ app.controller("CPUController", function($scope, $window, CPUFactory, CompFactor
   $scope.addCPUToComp = (cpuData) => {
     CompFactory.setCompCPU(cpuData);
     console.log("cpuData from cpuPartial", cpuData);
-      $window.location.href = '#!/comp/comp_Id/mem/view';
+      $window.location.href = '#!/comp/comp_Id/mem/view/moboValue';
   };
 });
 

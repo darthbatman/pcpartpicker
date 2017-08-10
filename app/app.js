@@ -47,7 +47,7 @@ app.config( ($routeProvider) => {
     controller: 'CPUController',
     resolve: {isAuth}
   })
-  .when('/comp/:comp_Id/mem/view', {
+  .when('/comp/:comp_Id/mem/view/:moboValue', {
     templateUrl: 'partials/mem.html',
     controller: 'MemController',
     resolve: {isAuth}
