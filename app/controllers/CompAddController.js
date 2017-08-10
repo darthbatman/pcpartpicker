@@ -3,18 +3,16 @@
 app.controller("CompAddController", function($scope, $window, CompFactory, UserFactory) {
 
   $scope.formTitle = "Create Computer";
+
   $scope.comp = {
     name: "",
     description: "",
     uid: UserFactory.getUser()
   };
 
-  $scope.saveComp = () => {
-    CompFactory.postNewComp($scope.comp)
-    .then( (data) => {
-      console.log("new comp data", data);
+  $scope.addBasicsToComp = () => {
+    CompFactory.setCompBasics($scope.comp);
       $window.location.href = '#!/socket/view';
-    });
   };
 
 });

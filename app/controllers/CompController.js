@@ -32,7 +32,7 @@ app.controller("CompController", function($scope, $window, UserFactory, CompFact
       });
   }
 
-  $scope.deleteTask = (compId) => {
+  $scope.deleteComp = (compId) => {
     console.log("delete called", compId);
     CompFactory.deleteTodoItem(compId)
       .then((data) => {
@@ -41,11 +41,11 @@ app.controller("CompController", function($scope, $window, UserFactory, CompFact
       });
   };
 
-  $scope.updateTaskStatus = (comp) => {
+  $scope.updateComp = (todoItem) => {
     console.log("status update");
-    CompFactory.updateTodoStatus(comp)
+    CompFactory.updateTodoStatus()
       .then((data) => {
-        console.log("Updated completed status");
+        console.log("Updated status");
       });
   };
 

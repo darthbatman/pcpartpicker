@@ -1,16 +1,24 @@
 'use strict';
 
-app.controller("MoboController", function($scope, $window, MoboFactory, $routeParams) {
+app.controller("MoboController", function($scope, $window, MoboFactory, CompFactory, $routeParams) {
   let moboSortOptions = $routeParams.optionValue;
   console.log("routeParams", $routeParams.optionValue);
   MoboFactory.getMobos(moboSortOptions)
-  .then((data) => {
-    console.log("data from getMobos", data);
+  .then((moboData) => {
+    $scope.moboData = moboData;
+    console.log("moboData from getMobos", moboData);
   })
   .catch((err) => {
     console.log("error from getMobos", err);
-  })
+  });
+
+  $scope.addMoboToComp = (moboData) => {
+    CompFactory.setCompMobo(moboData);
+    console.log("moboData from moboPartial", moboData);
+      $window.location.href = `#!/comp/comp_Id/cpu/view/${moboSortOptions}`;
+  };
 });
+
 
 
 

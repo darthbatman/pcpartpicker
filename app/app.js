@@ -42,7 +42,7 @@ app.config( ($routeProvider) => {
     controller: 'MoboController',
     resolve: {isAuth}
   })
-  .when('/comp/:comp_Id/cpu/view', {
+  .when('/comp/:comp_Id/cpu/view/:optionValue', {
     templateUrl: 'partials/cpu.html',
     controller: 'CPUController',
     resolve: {isAuth}

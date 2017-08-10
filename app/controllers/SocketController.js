@@ -1,6 +1,7 @@
 'use strict';
 // Remember to add back SocketFactory
 app.controller("SocketController", function($scope, $window, UserFactory, $routeParams) {
+  
   let comp_Id;
 
   let optionValue = null;
@@ -27,6 +28,7 @@ app.controller("SocketController", function($scope, $window, UserFactory, $route
   };
 
   $scope.moboRedirect = () => {
+    console.log("testing", optionValue);
     $window.location.href = `#!/comp/${comp_Id}/mobos/view/${optionValue}`;
   };
 });
