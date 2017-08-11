@@ -6,9 +6,11 @@ app.controller("MoboController", function($scope, $window, MoboFactory, CompFact
 
   // let moboValue = null;
   // Remember to use this variable to store mobo data like maxRAM and ramSlots for the memController
+  let ramSortOptions = $routeParams.ramSortOptions;
+  console.log("routeParams for Mem", $routeParams.ramSortOptions);
 
   let moboSortOptions = $routeParams.optionValue;
-  console.log("routeParams", $routeParams.optionValue);
+  // console.log("routeParams", $routeParams.optionValue);
   MoboFactory.getMobos(moboSortOptions)
     .then((moboData) => {
       $scope.moboData = moboData;

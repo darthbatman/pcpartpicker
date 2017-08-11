@@ -28,6 +28,11 @@ app.factory("CompFactory", function($q, $http, FirebaseUrl, UserFactory) {
     console.log("compObj", compObj);
   };
 
+  let setCompMem = (compObj) => {
+    comp.mem = compObj.mem;
+    console.log("compObj", compObj);
+  };
+
 
   let getCompList = (userId) => {
     console.log("userId", userId);

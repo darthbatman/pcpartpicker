@@ -1,26 +1,28 @@
 'use strict';
 
 app.controller("MemController", function($scope, $window, MemFactory, CompFactory, MoboFactory, $routeParams) {
- // Needs optionValue data from SocketController
+ // Needs moboValue data from MoboController
 
   let comp_Id;
 
   // Trying to get mobo data like maxRAM and ramSlots
-  let moboSortOptions = $routeParams.optionValue;
-  console.log("MemController optionValue", $routeParams.optionValue);
+  
+  CompFactory.getMemory = () = {
 
-  CPUFactory.getMem(moboSortOptions)
-  .then((cpuData) => {
-    $scope.cpuData = cpuData;
-    console.log("cpuData from getCPUs", cpuData);
+  };
+
+  MemFactory.getMem(moboSortOptions)
+  .then((memData) => {
+    $scope.memData = memData;
+    console.log("memData from getMems", MemData);
   })
   .catch((err) => {
-    console.log("error from getCPUs", err);
+    console.log("error from getMems", err);
   });
 
-  $scope.addCPUToComp = (cpuData) => {
-    CompFactory.setCompCPU(cpuData);
-    console.log("cpuData from cpuPartial", cpuData);
+  $scope.addMemToComp = (memData) => {
+    CompFactory.setCompMem(memData);
+    console.log("memData from memPartial", memData);
       $window.location.href = '#!/comp/comp_Id';
   };
 });

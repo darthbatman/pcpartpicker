@@ -19,7 +19,7 @@ app.controller("CPUController", function($scope, $window, CPUFactory, CompFactor
   $scope.addCPUToComp = (cpuData) => {
     CompFactory.setCompCPU(cpuData);
     console.log("cpuData from cpuPartial", cpuData);
-      $window.location.href = '#!/comp/comp_Id/mem/view/moboValue';
+      $window.location.href = `#!/comp/${comp_Id}/mem/view/${ramSortOptions}`;
   };
 });
 

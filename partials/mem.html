@@ -1,13 +1,12 @@
 <div class="col-xs-12">
   <h1>Compatible Memory</h1>
-  <div ng-controller="CPUController">
     <div class="row">
       <!--  Moved the search to the navbar. But also added "filter" functionality. But wait...How does this template know what's happening in a whole other template/controller binding?
       This one is tough-->
     </div>
     <div>
       <!-- What's going on with this filter? PFM, that's what -->
-      <div class="panel panel-default" ng-repeat="cpu in cpuData">
+      <div class="panel panel-default" ng-repeat="cpu in memData">
         <div class="panel-body">
           <div class="col-xs-4 socket">{{cpu.name}}</div>
           <div class="col-xs-2 cpu-price">Price: {{cpu.price}}</div>
