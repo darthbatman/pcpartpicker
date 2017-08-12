@@ -5,8 +5,14 @@ app.controller("CPUController", function($scope, $window, CPUFactory, CompFactor
  
   let comp_Id;
 
-  let moboSortOptions = $routeParams.optionValue;
-  console.log("CPUController optionValue", $routeParams.optionValue);
+  $scope.comp = CompFactory.getComp();
+  console.log("comp Obj", $scope.comp);
+  let memSortOptions = $scope.comp.mobo;
+  console.log("Motherboard data?", memSortOptions);
+  let moboSortOptions = $scope.comp.socket;
+  // let moboSortOptions = $routeParams.optionValue;
+
+  console.log("CPUController moboSortOptions", moboSortOptions);
   CPUFactory.getCPUs(moboSortOptions)
   .then((cpuData) => {
     $scope.cpuData = cpuData;
@@ -18,8 +24,8 @@ app.controller("CPUController", function($scope, $window, CPUFactory, CompFactor
 
   $scope.addCPUToComp = (cpuData) => {
     CompFactory.setCompCPU(cpuData);
-    console.log("cpuData from cpuPartial", cpuData);
-      $window.location.href = `#!/comp/${comp_Id}/mem/view/${ramSortOptions}`;
+    console.log("cpuData in cpuPartial", cpuData);
+    $window.location.href = `#!/comp/${comp_Id}/mem/view/${memSortOptions}`;
   };
 });
 

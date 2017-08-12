@@ -6,15 +6,16 @@ app.controller("MoboController", function($scope, $window, MoboFactory, CompFact
 
   // let moboValue = null;
   // Remember to use this variable to store mobo data like maxRAM and ramSlots for the memController
-  let ramSortOptions = $routeParams.ramSortOptions;
-  console.log("routeParams for Mem", $routeParams.ramSortOptions);
-
-  let moboSortOptions = $routeParams.optionValue;
-  // console.log("routeParams", $routeParams.optionValue);
+  
+  $scope.comp = CompFactory.getComp();
+  console.log("comp Obj", $scope.comp);
+  let moboSortOptions = $scope.comp.socket;
+  // let moboSortOptions = $routeParams.optionValue;
+  console.log("MoboController moboSortOptions", moboSortOptions);
   MoboFactory.getMobos(moboSortOptions)
     .then((moboData) => {
       $scope.moboData = moboData;
-      console.log("moboData from getMobos", moboData);
+      console.log("moboData from getMobos", $scope.moboData);
     })
     .catch((err) => {
       console.log("error from getMobos", err);
@@ -22,7 +23,9 @@ app.controller("MoboController", function($scope, $window, MoboFactory, CompFact
 
   $scope.addMoboToComp = (moboData) => {
     CompFactory.setCompMobo(moboData);
-    console.log("moboData from moboPartial", moboData);
+    $scope.comp = CompFactory.getComp();
+    $scope.comp.mobo = moboData;
+    console.log("moboData in moboPartial", moboData);
     $window.location.href = `#!/comp/${comp_Id}/cpu/view/${moboSortOptions}`;
   };
 });

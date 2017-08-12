@@ -37,17 +37,17 @@ app.config( ($routeProvider) => {
     controller: 'SocketController',
     resolve: {isAuth}
   })
-  .when('/comp/:comp_Id/mobos/view/:optionValue', {
+  .when('/comp/:comp_Id/mobos/view/:moboSortOptions', {
     templateUrl: 'partials/mobo.html',
     controller: 'MoboController',
     resolve: {isAuth}
   })
-  .when('/comp/:comp_Id/cpu/view/:optionValue', {
+  .when('/comp/:comp_Id/cpu/view/:moboSortOptions', {
     templateUrl: 'partials/cpu.html',
     controller: 'CPUController',
     resolve: {isAuth}
   })
-  .when('/comp/:comp_Id/mem/view/:ramSortOptions', {
+  .when('/comp/:comp_Id/mem/view/:memSortOptions', {
     templateUrl: 'partials/mem.html',
     controller: 'MemController',
     resolve: {isAuth}

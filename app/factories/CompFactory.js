@@ -6,15 +6,25 @@ app.factory("CompFactory", function($q, $http, FirebaseUrl, UserFactory) {
   let comp = {
     name: "",
     description: "",
+    socket: null,
     mobo: null,
     cpu: null,
     mem: null,
     uid: UserFactory.getUser()
   };
 
+  let getComp = () => {
+    return comp;
+  };
+
   let setCompBasics = (compObj) => {
     comp.name = compObj.name;
     comp.description = compObj.description;
+    console.log("compObj", compObj);
+  };
+
+  let setCompSocket = (compObj) => {
+    comp.socket = compObj.socket;
     console.log("compObj", compObj);
   };
 
@@ -120,6 +130,8 @@ app.factory("CompFactory", function($q, $http, FirebaseUrl, UserFactory) {
     getSingleComp,
     setCompBasics,
     setCompMobo,
-    setCompCPU
+    setCompCPU,
+    setCompSocket,
+    getComp
   };
 });

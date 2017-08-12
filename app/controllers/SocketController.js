@@ -1,13 +1,26 @@
 'use strict';
 // Remember to add back SocketFactory
-app.controller("SocketController", function($scope, $window, UserFactory, $routeParams) {
-  
+app.controller("SocketController", function($scope, $window, UserFactory, CompFactory, $routeParams) {
+
   let comp_Id;
+  let moboSortOptions;
+  // let moboSortOptions = $routeParams.optionValue;
 
-  let optionValue = null;
+  $scope.valueChange = (value) => {
+    console.log(value);
+    $scope.comp = CompFactory.getComp();
+    moboSortOptions = value;
+    $scope.comp.socket = moboSortOptions;
+    console.log("socket on comp obj", $scope.comp.socket);
+  };
 
-  let moboSortOptions = $routeParams.optionValue;
+  $scope.data = {
+    multipleSelect: [],
+    option1: 'option-1'
+  };
 
+  
+  // console.log("scope value", moboSortOptions);
   // $scope.moboRedirect = () => {
   //   console.log("monkey");
   //     .then((data) => {
@@ -17,18 +30,10 @@ app.controller("SocketController", function($scope, $window, UserFactory, $route
   //     });
   // };
 
-  $scope.valueChange = (value) => {
-    console.log(value);
-    optionValue = value;
-  };
-
-  $scope.data = {
-    multipleSelect: [],
-    option1: 'option-1'
-  };
 
   $scope.moboRedirect = () => {
-    console.log("testing", optionValue);
-    $window.location.href = `#!/comp/${comp_Id}/mobos/view/${optionValue}`;
+    // CompFactory.setCompSocket();
+    console.log("testing", moboSortOptions);
+    $window.location.href = `#!/comp/${comp_Id}/mobos/view/${moboSortOptions}`;
   };
 });

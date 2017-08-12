@@ -5,71 +5,23 @@ app.controller("MemController", function($scope, $window, MemFactory, CompFactor
 
   let comp_Id;
 
-  // Trying to get mobo data like maxRAM and ramSlots
-  
-  CompFactory.getMemory = () = {
+  $scope.comp = CompFactory.getComp();
+  console.log("comp Obj", $scope.comp);
 
-  };
-
-  MemFactory.getMem(moboSortOptions)
+  let memSortOptions = $scope.comp.mobo;
+  console.log("computer in MemController", memSortOptions);
+  MemFactory.getMem(memSortOptions)
   .then((memData) => {
     $scope.memData = memData;
-    console.log("memData from getMems", MemData);
+    console.log("memData from getMem", memData);
   })
   .catch((err) => {
-    console.log("error from getMems", err);
+    console.log("error from getMem", err);
   });
 
   $scope.addMemToComp = (memData) => {
     CompFactory.setCompMem(memData);
-    console.log("memData from memPartial", memData);
-      $window.location.href = '#!/comp/comp_Id';
+    console.log("memData in memPartial", memData);
+    $window.location.href = `#!/comp/${comp_Id}/mem/view/`;
   };
 });
-
-
-
-
-
-
-
-
-
-
-// // for viewing all todo items, deleting an item, updating completed status
-//   function fetchMobo() {  
-//     let todoArr = [];
-//     console.log("Fetch called");
-//     SocketFactory.getTodoList(currentUser)
-//     .then( (todoList) => {
-//       console.log("todo Data", todoList);
-//       let todoData = todoList.data;
-//       Object.keys(todoData).forEach( (key) => {
-//         todoData[key].id = key;
-//         todoArr.push(todoData[key]);
-//       });
-//       $scope.todos = todoArr;
-//     })
-//     .catch( (err) => {
-//       console.log("error!", err);
-//     });
-//   }
-
-//   $scope.deleteMobo = (taskId) => {
-//     console.log("delete called", taskId);
-//     SocketFactory.deleteTodoItem(taskId)
-//     .then( (data) => { 
-//       console.log("removed item", data);
-//       fetchSocket(currentUser);
-//     });
-//   };
-
-//   $scope.updateTaskStatus = (todoItem) => {
-//     console.log("status update");
-//     SocketFactory.updateTodoStatus(todoItem)
-//     .then( (data) => {
-//       console.log("Updated completed status");
-//     });
-//   };
-
-// });
