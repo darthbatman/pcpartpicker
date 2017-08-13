@@ -9,6 +9,7 @@ app.factory("CompFactory", function($q, $http, FirebaseUrl, UserFactory) {
     socket: null,
     mobo: null,
     cpu: null,
+    maxRAM: null,
     mem: null,
     uid: UserFactory.getUser()
   };
@@ -132,6 +133,7 @@ app.factory("CompFactory", function($q, $http, FirebaseUrl, UserFactory) {
     setCompMobo,
     setCompCPU,
     setCompSocket,
+    setCompMem,
     getComp
   };
 });

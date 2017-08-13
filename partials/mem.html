@@ -6,14 +6,15 @@
     </div>
     <div>
       <!-- What's going on with this filter? PFM, that's what -->
-      <div class="panel panel-default" ng-repeat="cpu in memData">
+      <div class="panel panel-default" ng-repeat="mem in memData">
         <div class="panel-body">
-          <div class="col-xs-4 socket">{{cpu.name}}</div>
-          <div class="col-xs-2 cpu-price">Price: {{cpu.price}}</div>
-          <div class="col-xs-2 max-mem">Clock speed: {{cpu.speed}}GHz</div>
-          <div class="col-xs-2 max-slots">CPU Cores: {{cpu.cores}}</div>
-          <div class="col-xs-2 cpu-socket">TDP: {{cpu.tdp}}</div>
-          <div class="col-xs-2 add"><button class="btn btn-info btn-sm" ng-click="addCPUToComp(cpu)"><i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i></button></div>
+          <div class="col-xs-2 socket">{{mem.name}}</div>
+          <div class="col-xs-2 mem-price">Price: {{mem.price}}</div>
+          <div class="col-xs-2 max-mem">Clock: {{mem.speed}}MHz</div>
+          <div class="col-xs-2 max-slots">CAS Latency: {{mem.CAS}}</div>
+          <div class="col-xs-2 mem-socket">Capacity: {{mem.size}}</div>
+          <div class="col-xs-2 mem-socket">Module Config: {{mem.modules}}</div>
+          <div class="col-xs-2 add"><button class="btn btn-info btn-sm" ng-click="addMemToComp(mem)"><i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i></button></div>
         </div>
       </div>
     </div>

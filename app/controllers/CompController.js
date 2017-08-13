@@ -14,23 +14,28 @@ app.controller("CompController", function($scope, $window, UserFactory, CompFact
   // $scope.searchText = FilterFactory;
 
   // for viewing all computers, deleting a computer, and updating a computer
-  function fetchComp() {
-    let compArr = [];
-    console.log("Fetch called");
-    CompFactory.getCompList(currentUser)
-      .then((compList) => {
-        console.log("comp Data", compList);
-        let compData = compList.data;
-        Object.keys(compData).forEach((key) => {
-          compData[key].id = key;
-          compArr.push(compData[key]);
-        });
-        $scope.comp = compArr;
-      })
-      .catch((err) => {
-        console.log("error!", err);
-      });
-  }
+ function fetchComp() { 
+  $scope.comp = CompFactory.getComp();
+  console.log("comp Obj in CompController", $scope.comp);
+}
+
+  // function fetchComp() {
+  //   let compArr = [];
+  //   console.log("Fetch called");
+  //   CompFactory.getCompList(currentUser)
+  //     .then((compList) => {
+  //       console.log("comp Data", compList);
+  //       let compData = compList.data;
+  //       Object.keys(compData).forEach((key) => {
+  //         compData[key].id = key;
+  //         compArr.push(compData[key]);
+  //       });
+  //       $scope.comp = compArr;
+  //     })
+  //     .catch((err) => {
+  //       console.log("error!", err);
+  //     });
+  // }
 
   $scope.deleteComp = (compId) => {
     console.log("delete called", compId);
