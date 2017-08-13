@@ -6,10 +6,10 @@ app.controller("MemController", function($scope, $window, MemFactory, CompFactor
   let comp_Id;
 
   $scope.comp = CompFactory.getComp();
-  console.log("comp Obj", $scope.comp);
+  console.log("comp Obj in MemController", $scope.comp);
 
-  let memSortOptions = $scope.comp.mobo;
-  console.log("computer in MemController", memSortOptions);
+  let memSortOptions = $scope.comp.maxRAM;
+  console.log("maxRAM in MemController", memSortOptions);
   MemFactory.getMem(memSortOptions)
   .then((memData) => {
     $scope.memData = memData;
@@ -21,7 +21,9 @@ app.controller("MemController", function($scope, $window, MemFactory, CompFactor
 
   $scope.addMemToComp = (memData) => {
     CompFactory.setCompMem(memData);
+    $scope.comp = CompFactory.getComp();
+    $scope.comp.mem = memData;
     console.log("memData in memPartial", memData);
-    $window.location.href = `#!/comp/${comp_Id}/mem/view/`;
+    $window.location.href = `#!/comp/view`;
   };
 });
