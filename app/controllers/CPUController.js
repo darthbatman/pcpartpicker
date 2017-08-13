@@ -6,9 +6,13 @@ app.controller("CPUController", function($scope, $window, CPUFactory, CompFactor
   let comp_Id;
 
   $scope.comp = CompFactory.getComp();
-  console.log("comp Obj", $scope.comp);
-  let memSortOptions = $scope.comp.mobo;
-  console.log("Motherboard data?", memSortOptions);
+  console.log("comp Obj in CPUController", $scope.comp);
+  // test added to start modifying data for sort
+  let modRAM = $scope.comp.mobo.maxRAM += "GB";
+  console.log("modRAM?", modRAM);
+
+  let memSortOptions = $scope.comp.mobo.maxRAM;
+  console.log("Motherboard data at CPUController?", memSortOptions);
   let moboSortOptions = $scope.comp.socket;
   // let moboSortOptions = $routeParams.optionValue;
 
@@ -24,8 +28,11 @@ app.controller("CPUController", function($scope, $window, CPUFactory, CompFactor
 
   $scope.addCPUToComp = (cpuData) => {
     CompFactory.setCompCPU(cpuData);
+    $scope.comp = CompFactory.getComp();
+    $scope.comp.cpu = cpuData;
     console.log("cpuData in cpuPartial", cpuData);
-    $window.location.href = `#!/comp/${comp_Id}/mem/view/${memSortOptions}`;
+    // ${memSortOptions}
+    $window.location.href = `#!/comp/${comp_Id}/mem/view/`;
   };
 });
 

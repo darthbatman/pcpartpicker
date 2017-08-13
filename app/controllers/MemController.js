@@ -22,6 +22,6 @@ app.controller("MemController", function($scope, $window, MemFactory, CompFactor
   $scope.addMemToComp = (memData) => {
     CompFactory.setCompMem(memData);
     console.log("memData in memPartial", memData);
-    $window.location.href = `#!/comp/${comp_Id}/mem/view/`;
+    $window.location.href = `#!/comp/view`;
   };
 });
