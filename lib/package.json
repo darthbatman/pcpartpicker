@@ -1,0 +1,24 @@
+{
+  "name": "MemDB",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-browserify": "^5.0.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "matchdep": "^1.0.1",
+    "browserify": "^13.0.0"
+  },
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-route": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "firebase": "^4.1.5",
+    "jquery": "^3.2.1",
+    "cheerio": "^0.20.0",
+    "request": "^2.72.0"
+  }
+}
