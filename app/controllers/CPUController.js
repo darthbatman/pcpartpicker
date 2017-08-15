@@ -7,18 +7,8 @@ app.controller("CPUController", function($scope, $window, CPUFactory, CompFactor
 
   $scope.comp = CompFactory.getComp();
   console.log("comp Obj in CPUController", $scope.comp);
-  // test added to start modifying data for sort
-  let memSortOptions = $scope.comp.mobo.maxRAM;
-  // let memSortOptions = {
-  //   "size": ["16GB (2x8)"],
-  //   "speed": ["DDR4-3733"]
-  // };
-  $scope.comp.maxRAM = memSortOptions;
-  // console.log("modRAM?", modRAM);
   
-  console.log("Motherboard data at CPUController?", memSortOptions);
   let moboSortOptions = $scope.comp.socket;
-  // let moboSortOptions = $routeParams.optionValue;
 
   console.log("CPUController moboSortOptions", moboSortOptions);
   CPUFactory.getCPUs(moboSortOptions)

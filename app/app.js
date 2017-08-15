@@ -47,7 +47,6 @@ app.config( ($routeProvider) => {
     controller: 'CPUController',
     resolve: {isAuth}
   })
-  // :memSortOptions
   .when('/comp/:comp_Id/mem/view/', {
     templateUrl: 'partials/mem.html',
     controller: 'MemController',
